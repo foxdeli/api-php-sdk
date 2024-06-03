@@ -1,0 +1,116 @@
+name: Pull Request Build & Test
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  php71:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: php-actions/composer@v6
+        with:
+          php_version: "7.1"
+          version: "2.2"
+
+      - name: PHPUnit
+        uses: php-actions/phpunit@v3
+        with:
+          bootstrap: vendor/autoload.php
+          configuration: tests/phpunit.xml
+          php_version: "7.1"
+          version: "7.5"
+
+      # - name: PHPStan Static Analysis
+      #   uses: php-actions/phpstan@v3
+      #   with:
+      #     path: openapi/lib/ src/ tests/
+      #     php_version: "7.1"
+      #     version: "1.4.10"
+      #     level: 8
+      #     configuration: phpstan.neon
+
+  php72:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: php-actions/composer@v6
+        with:
+          php_version: "7.2"
+          version: "2.2"
+
+      - name: PHPStan Static Analysis
+        uses: php-actions/phpstan@v3
+        with:
+          path: openapi/lib/ src/ tests/
+          php_version: "7.2"
+          level: 8
+          configuration: phpstan.neon
+
+      - name: PHPUnit
+        uses: php-actions/phpunit@v3
+        with:
+          bootstrap: vendor/autoload.php
+          configuration: tests/phpunit.xml
+          php_version: "7.2"
+          version: "8.5"
+
+  php73:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: php-actions/composer@v6
+        with:
+          php_version: "7.3"
+          version: "2.2"
+
+      - name: PHPStan Static Analysis
+        uses: php-actions/phpstan@v3
+        with:
+          path: openapi/lib/ src/ tests/
+          php_version: "7.3"
+          level: 8
+          configuration: phpstan.neon
+
+      - name: PHPUnit
+        uses: php-actions/phpunit@v3
+        with:
+          bootstrap: vendor/autoload.php
+          configuration: tests/phpunit.xml
+          php_version: "7.3"
+          version: "9.6"
+
+  php74:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: php-actions/composer@v6
+        with:
+          php_version: "7.4"
+          version: "2.2"
+
+      - name: PHPStan Static Analysis
+        uses: php-actions/phpstan@v3
+        with:
+          path: openapi/lib/ src/ tests/
+          php_version: "7.4"
+          level: 8
+          configuration: phpstan.neon
+
+      - name: PHPUnit
+        uses: php-actions/phpunit@v3
+        with:
+          bootstrap: vendor/autoload.php
+          configuration: tests/phpunit.xml
+          php_version: "7.4"
+          version: "9.6"
