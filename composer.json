@@ -46,7 +46,7 @@
     },
     "scripts": {
         "phpstan": [
-            "vendor/bin/phpstan analyse -l 8 -c phpstan.neon openapi/lib/ src/ tests/"
+            "vendor/bin/phpstan analyse -l 8 -c phpstan.neon lib/ tests/"
         ],
         "tests": [
             "vendor/bin/phpunit tests"

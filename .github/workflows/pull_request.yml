@@ -28,7 +28,7 @@ jobs:
       # - name: PHPStan Static Analysis
       #   uses: php-actions/phpstan@v3
       #   with:
-      #     path: openapi/lib/ src/ tests/
+      #     path: lib/ tests/
       #     php_version: "7.1"
       #     version: "1.4.10"
       #     level: 8
@@ -48,7 +48,7 @@ jobs:
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v3
         with:
-          path: openapi/lib/ src/ tests/
+          path: lib/ tests/
           php_version: "7.2"
           level: 8
           configuration: phpstan.neon
@@ -75,7 +75,7 @@ jobs:
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v3
         with:
-          path: openapi/lib/ src/ tests/
+          path: lib/ tests/
           php_version: "7.3"
           level: 8
           configuration: phpstan.neon
@@ -102,7 +102,7 @@ jobs:
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v3
         with:
-          path: openapi/lib/ src/ tests/
+          path: lib/ tests/
           php_version: "7.4"
           level: 8
           configuration: phpstan.neon

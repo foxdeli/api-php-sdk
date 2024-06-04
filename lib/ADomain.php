@@ -3,6 +3,7 @@
 namespace Foxdeli\ApiPhpSdk;
 
 use Foxdeli\ApiPhpSdk\ApiException;
+use Foxdeli\ApiPhpSdk\Configuration\Configuration;
 use Foxdeli\ApiPhpSdk\ObjectSerializer;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
