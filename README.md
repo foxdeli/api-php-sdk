@@ -1,6 +1,6 @@
 # Foxdeli PHP API Client
 
-https://github.com/foxdeli/api-php-sdk/actions/workflows/pull_request.yml/badge.svg
+![workflow](https://github.com/foxdeli/api-php-sdk/actions/workflows/pull_request.yml/badge.svg)
 
 The `Foxdeli` client is a PHP client for the Foxdeli API, allowing you to interact with the API to manage parcels and orders.
 
