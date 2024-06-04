@@ -2,6 +2,6 @@ parameters:
 	checkGenericClassInNonGenericObjectType: false
 	treatPhpDocTypesAsCertain: false
 	ignoreErrors:
-		- "#^Strict comparison using === between '\\\\\\\\Foxdeli\\\\\\\\OpenApi…' and '\\\\\\\\SplFileObject' will always evaluate to false.$#"
+		- "#^Strict comparison using === between '\\\\\\\\Foxdeli\\\\\\\\ApiPhpSdk…' and '\\\\\\\\SplFileObject' will always evaluate to false.$#"
 		- "#^If condition is always (false|true).$#"
 		- "#^Variable \\$[^\\s]* in isset\\(\\) always exists and is not nullable.$#"
