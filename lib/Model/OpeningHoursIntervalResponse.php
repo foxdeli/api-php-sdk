@@ -198,13 +198,13 @@ class OpeningHoursIntervalResponse implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        // if (!is_null($this->container['from']) && !preg_match("/HH:mm:ss/", $this->container['from'])) {
-        //     $invalidProperties[] = "invalid value for 'from', must be conform to the pattern /HH:mm:ss/.";
-        // }
+        if (!is_null($this->container['from']) && !preg_match("/\d\d:\d\d:\d\d/", $this->container['from'])) {
+            $invalidProperties[] = "invalid value for 'from', must be conform to the pattern /HH:mm:ss/.";
+        }
 
-        // if (!is_null($this->container['to']) && !preg_match("/HH:mm:ss/", $this->container['to'])) {
-        //     $invalidProperties[] = "invalid value for 'to', must be conform to the pattern /HH:mm:ss/.";
-        // }
+        if (!is_null($this->container['to']) && !preg_match("/\d\d:\d\d:\d\d/", $this->container['to'])) {
+            $invalidProperties[] = "invalid value for 'to', must be conform to the pattern /HH:mm:ss/.";
+        }
 
         return $invalidProperties;
     }
@@ -240,9 +240,10 @@ class OpeningHoursIntervalResponse implements ModelInterface, ArrayAccess, \Json
      */
     public function setFrom($from) : self
     {
-        // if (!is_null($from) && (!preg_match("/HH:mm:ss/", $from))) {
-        //     throw new \InvalidArgumentException("invalid value for $from when calling OpeningHoursIntervalResponse., must conform to the pattern /HH:mm:ss/.");
-        // }
+
+        if (!is_null($from) && (!preg_match("/\d\d:\d\d:\d\d/", $from))) {
+            throw new \InvalidArgumentException("invalid value for $from when calling OpeningHoursIntervalResponse., must conform to the pattern /HH:mm:ss/.");
+        }
 
         $this->container['from'] = $from;
 
@@ -269,9 +270,9 @@ class OpeningHoursIntervalResponse implements ModelInterface, ArrayAccess, \Json
     public function setTo($to) : self
     {
 
-        // if (!is_null($to) && (!preg_match("/HH:mm:ss/", $to))) {
-        //     throw new \InvalidArgumentException("invalid value for $to when calling OpeningHoursIntervalResponse., must conform to the pattern /HH:mm:ss/.");
-        // }
+        if (!is_null($to) && (!preg_match("/\d\d:\d\d:\d\d/", $to))) {
+            throw new \InvalidArgumentException("invalid value for $to when calling OpeningHoursIntervalResponse., must conform to the pattern /HH:mm:ss/.");
+        }
 
         $this->container['to'] = $to;
 
