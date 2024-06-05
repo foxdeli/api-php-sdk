@@ -217,11 +217,11 @@ class ExceptionallyOpeningHoursResponse implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['from']) && !preg_match("/HH:mm:ss/", $this->container['from'])) {
+        if (!is_null($this->container['from']) && !preg_match("/\d\d:\d\d:\d\d/", $this->container['from'])) {
             $invalidProperties[] = "invalid value for 'from', must be conform to the pattern /HH:mm:ss/.";
         }
 
-        if (!is_null($this->container['to']) && !preg_match("/HH:mm:ss/", $this->container['to'])) {
+        if (!is_null($this->container['to']) && !preg_match("/\d\d:\d\d:\d\d/", $this->container['to'])) {
             $invalidProperties[] = "invalid value for 'to', must be conform to the pattern /HH:mm:ss/.";
         }
 
@@ -286,7 +286,7 @@ class ExceptionallyOpeningHoursResponse implements ModelInterface, ArrayAccess, 
     public function setFrom($from) : self
     {
 
-        if (!is_null($from) && (!preg_match("/HH:mm:ss/", $from))) {
+        if (!is_null($from) && (!preg_match("/\d\d:\d\d:\d\d/", $from))) {
             throw new \InvalidArgumentException("invalid value for $from when calling ExceptionallyOpeningHoursResponse., must conform to the pattern /HH:mm:ss/.");
         }
 
@@ -317,7 +317,7 @@ class ExceptionallyOpeningHoursResponse implements ModelInterface, ArrayAccess, 
     public function setTo($to) : self
     {
 
-        if (!is_null($to) && (!preg_match("/HH:mm:ss/", $to))) {
+        if (!is_null($to) && (!preg_match("/\d\d:\d\d:\d\d/", $to))) {
             throw new \InvalidArgumentException("invalid value for $to when calling ExceptionallyOpeningHoursResponse., must conform to the pattern /HH:mm:ss/.");
         }
 
