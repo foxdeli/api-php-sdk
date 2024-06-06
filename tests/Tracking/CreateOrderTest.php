@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Tracking;
 
 use DateTime;
+use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
 use Foxdeli\ApiPhpSdk\Customer;
 use Foxdeli\ApiPhpSdk\Tracking;
@@ -29,6 +30,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 final class CreateOrderTest extends TestCase
@@ -54,6 +56,127 @@ final class CreateOrderTest extends TestCase
         } else {
             $this->fail("External date not passed");
         }
+    }
+
+    public function testWithBadArgumentsRequest(): void
+    {
+        $mock = new MockHandler([
+            new Response(400, ['Content-Type' => 'application/problem+json'], $this->getRawError400Response())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for enum \'\\Foxdeli\\ApiPhpSdk\\Model\\LanguageCode\'');
+
+        $orderRegistration = $this->getOrderRegistration();
+        $tracking->createOrder($orderRegistration->setLanguage('bb'));
+
+    }
+
+    public function testWith400Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(400, ['Content-Type' => 'application/problem+json'], $this->getRawError400Response())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(400);
+        $this->expectExceptionMessage('Bad Request');
+
+        $orderRegistration = $this->getOrderRegistration();
+        $tracking->createOrder($orderRegistration);
+
+    }
+
+    public function testWith401Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(401, ['Content-Type' => 'application/problem+json'], $this->getRawError401Response())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(401);
+        $this->expectExceptionMessage('The Token has expired on 2024-01-02T03:04:05Z.');
+
+        $orderRegistration = $this->getOrderRegistration();
+        $order = $tracking->createOrder($orderRegistration);
+
+    }
+
+    public function testWith403Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(403, ['Content-Type' => 'application/problem+json'], $this->getRawError403Response())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(403);
+        $this->expectExceptionMessage('Eshop was not found for this API key');
+
+        $orderRegistration = $this->getOrderRegistration();
+        $order = $tracking->createOrder($orderRegistration->setEshopId('33333333-3333-3333-3333-333333333333'));
+
+    }
+
+    public function testWith409Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(409, ['Content-Type' => 'application/problem+json'], $this->getRawError409Response())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(409);
+        $this->expectExceptionMessage('Conflict');
+        $this->expectExceptionMessage('Order exists');
+
+        $orderRegistration = $this->getOrderRegistration();
+        $order = $tracking->createOrder($orderRegistration->setExternalIdentifier('already-existing-id'));
+
+    }
+
+    public function testWith415Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(415, ['Content-Type' => 'application/problem+json'], $this->getRawError415Response())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(415);
+        $this->expectExceptionMessage('Unsupported Media Type');
+
+        $orderRegistration = $this->getOrderRegistration();
+        $order = $tracking->createOrder($orderRegistration);
+
     }
 
     private function getOrderRegistration() : OrderRegistration {
@@ -285,6 +408,63 @@ final class CreateOrderTest extends TestCase
                 "phone": "+420 123 456 789"
             },
             "language": "cs"
+        }';
+    }
+
+    private function getRawError400Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Bad Request",
+            "status": 400,
+            "detail": "Failed to read request",
+            "instance": "/tracking/api/v1/order",
+            "violations": {
+                "language": "Invalid value: bb. Value must be one of: aa, ab, ae, af, ak, am, an, ar, as, av, ay, az, ba, be, bg, bh, bi, bm, bn, bo, br, bs, ca, ce, ch, co, cr, cs, cu, cv, cy, da, de, dv, dz, ee, el, en, eo, es, et, eu, fa, ff, fi, fj, fo, fr, fy, ga, gd, gl, gn, gu, gv, ha, he, hi, ho, hr, ht, hu, hy, hz, ia, id, ie, ig, ii, ik, io, is, it, iu, ja, jv, ka, kg, ki, kj, kk, kl, km, kn, ko, kr, ks, ku, kv, kw, ky, la, lb, lg, li, ln, lo, lt, lu, lv, mg, mh, mi, mk, ml, mn, mr, ms, mt, my, na, nb, nd, ne, ng, nl, nn, no, nr, nv, ny, oc, oj, om, or, os, pa, pi, pl, ps, pt, qu, rm, rn, ro, ru, rw, sa, sc, sd, se, sg, si, sk, sl, sm, sn, so, sq, sr, ss, st, su, sv, sw, ta, te, tg, th, ti, tk, tl, tn, to, tr, ts, tt, tw, ty, ug, uk, undefined, ur, uz, ve, vi, vo, wa, wo, xh, yi, yo, za, zh, zu"
+            }
+        }';
+    }
+
+    private function getRawError401Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "The Token has expired on 2024-01-02T03:04:05Z.",
+            "status": 401,
+            "detail": "The Token has expired on 2024-01-02T03:04:05Z.",
+            "instance": "/tracking/api/v1/order"
+        }';
+    }
+
+    private function getRawError403Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Eshop was not found for this API key",
+            "status": 403,
+            "detail": "Eshop with id 61f29a42-25ad-4ef8-8c9a-7837237c86cb doesn\'t exist in this account.",
+            "instance": "/tracking/api/v1/order",
+            "eshopId": "61f29a42-25ad-4ef8-8c9a-7837237c86cb"
+        }';
+    }
+
+    private function getRawError409Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Order exists",
+            "status": 409,
+            "detail": "Order with externalId ORD123456101 already exists",
+            "instance": "/tracking/api/v1/order",
+            "resourceType": "Order",
+            "resourceId": "ORD123456101",
+            "resourceIdName": "externalId"
+        }';
+    }
+
+    private function getRawError415Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Unsupported Media Type",
+            "status": 415,
+            "detail": "Content-Type \'text/plain;charset=UTF-8\' is not supported.",
+            "instance": "/tracking/api/v1/order"
         }';
     }
 }
