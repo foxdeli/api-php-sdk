@@ -237,7 +237,7 @@ final class FindParcelByIdTest extends TestCase
             "title": "Constraint violation",
             "status": 400,
             "detail": "findParcelById.parcelId: must be a valid UUID",
-            "instance": "/tracking/api/v1/order/55555555-5555-5555-5555-555555555555/parcel/717d4133-1208-458e-b2da-8b6f42973549",
+            "instance": "/tracking/api/v1/order/33333333-3333-3333-3333-333333333333/parcel/22222222-2222-2222-2222-222222222222abc",
             "violations": {
                 "findParcelById.parcelId": "must be a valid UUID"
             }
@@ -250,7 +250,7 @@ final class FindParcelByIdTest extends TestCase
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
             "status": 401,
             "detail": "The Token has expired on 2024-01-02T03:04:05Z.",
-            "instance": "/tracking/api/v1/order/33333333-3333-3333-3333-333333333333/parcel",
+            "instance": "/tracking/api/v1/order/33333333-3333-3333-3333-333333333333/parcel/22222222-2222-2222-2222-222222222222",
         }';
     }
 
@@ -260,7 +260,7 @@ final class FindParcelByIdTest extends TestCase
             "title": "Forbidden operation",
             "status": 403,
             "detail": "Account is not owner of resource ORDER with id 00000000-0000-0000-0000-000000000000",
-            "instance": "/tracking/api/v1/order/33333333-3333-3333-3333-333333333333/parcel/44444444-4444-4444-4444-444444444444",
+            "instance": "/tracking/api/v1/order/00000000-0000-0000-0000-000000000000/parcel/22222222-2222-2222-2222-222222222222",
             "resourceType": "ORDER",
             "resourceId": "00000000-0000-0000-0000-000000000000"
         }';
@@ -272,7 +272,7 @@ final class FindParcelByIdTest extends TestCase
             "title": "Order was not found",
             "status": 404,
             "detail": "Order with id 55555555-5555-5555-5555-555555555555 doesn\'t exist",
-            "instance": "/tracking/api/v1/order/55555555-5555-5555-5555-555555555555/parcel/44444444-4444-4444-4444-444444444444",
+            "instance": "/tracking/api/v1/order/55555555-5555-5555-5555-555555555555/parcel/22222222-2222-2222-2222-222222222222",
             "orderId": "55555555-5555-5555-5555-555555555555"
         }';
     }
@@ -296,8 +296,7 @@ final class FindParcelByIdTest extends TestCase
             "title": "Unsupported Media Type",
             "status": 415,
             "detail": "Content-Type \'text/plain;charset=UTF-8\' is not supported.",
-            "instance": "/tracking/api/v1/order/33333333-3333-3333-3333-333333333333/parcel",
+            "instance": "/tracking/api/v1/order/33333333-3333-3333-3333-333333333333/parcel/44444444-4444-4444-4444-444444444444",
         }';
     }
-
 }
