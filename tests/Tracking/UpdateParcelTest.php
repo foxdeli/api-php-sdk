@@ -247,8 +247,7 @@ final class UpdateParcelTest extends TestCase
         $this->expectExceptionCode(404);
         $this->expectExceptionMessage('Order was not found');
 
-        $tracking->findParcelById('55555555-5555-5555-5555-555555555555', "22222222-2222-2222-2222-222222222222");
-
+        $tracking->updateParcel('33333333-3333-3333-3333-333333333333', "22222222-2222-2222-2222-222222222222", $this->getParcelUpdate());
     }
 
     public function testWith404ParcelResponse(): void
@@ -267,7 +266,6 @@ final class UpdateParcelTest extends TestCase
         $this->expectExceptionMessage('Parcel was not found');
 
         $tracking->updateParcel('33333333-3333-3333-3333-333333333333', "22222222-2222-2222-2222-222222222222", $this->getParcelUpdate());
-
     }
 
     public function testWith415Response(): void
@@ -294,7 +292,7 @@ final class UpdateParcelTest extends TestCase
             "title": "Constraint violation",
             "status": 400,
             "detail": "findParcelById.parcelId: must be a valid UUID",
-            "instance": "/tracking/api/v1/order/55555555-5555-5555-5555-555555555555/parcel/717d4133-1208-458e-b2da-8b6f42973549",
+            "instance": "/tracking/api/v1/order/55555555-5555-5555-5555-555555555555/parcel/22222222-2222-2222-2222-222222222222",
             "violations": {
                 "findParcelById.parcelId": "must be a valid UUID"
             }
@@ -356,6 +354,4 @@ final class UpdateParcelTest extends TestCase
             "instance": "/tracking/api/v1/order/33333333-3333-3333-3333-333333333333/parcel",
         }';
     }
-
-
 }
