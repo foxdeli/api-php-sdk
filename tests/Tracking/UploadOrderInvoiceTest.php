@@ -197,5 +197,4 @@ final class UploadOrderInvoiceTest extends TestCase
             "instance": "/tracking/api/v1/order"
         }';
     }
-
 }
