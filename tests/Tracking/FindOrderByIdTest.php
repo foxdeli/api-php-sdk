@@ -279,10 +279,10 @@ final class FindByIdTest extends TestCase
             "type": "about:blank",
             "title": "Constraint violation",
             "status": 400,
-            "detail": "cancelOrder.orderId: must be a valid UUID",
-            "instance": "/tracking/api/v1/order/11111111-1111-1111-1111-111111111111/cancel",
+            "detail": "findOrderById.orderId: must be a valid UUID",
+            "instance": "/tracking/api/v1/order/11111111-1111-1111-1111-111111111111",
             "violations": {
-                "cancelOrder.orderId": "must be a valid UUID"
+                "findOrderById.orderId": "must be a valid UUID"
             }
         }';
     }
