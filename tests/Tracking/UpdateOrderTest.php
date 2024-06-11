@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace Tests\Tracking;
 
+use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
 use Foxdeli\ApiPhpSdk\Tracking;
 use Foxdeli\ApiPhpSdk\Model\Order;
 use Foxdeli\ApiPhpSdk\Model\OrderUpdate;
+use Foxdeli\ApiPhpSdk\Model\PaymentRequest;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 final class UpdateOrderTest extends TestCase
@@ -174,6 +177,223 @@ final class UpdateOrderTest extends TestCase
                 "phone": "+420 123 456 789"
             },
             "language": "cs"
+        }';
+    }
+
+    public function testWith400ResponseOrderId(): void
+    {
+        $mock = new MockHandler([
+            new Response(400, ['Content-Type' => 'application/problem+json'], $this->getRawError400ResponseOrderId())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(400);
+        $this->expectExceptionMessage('Bad Request');
+
+        $orderUpdate = new OrderUpdate();
+        $orderUpdate->setOrderNumber('A123456789ABCDE');
+        $tracking->updateOrder('22222222-2222-2222-2222-222222222222', $orderUpdate);
+
+    }
+
+    public function testWith400ResponsePaymentMethodInvalidValue(): void
+    {
+        $mock = new MockHandler([
+            new Response(400, ['Content-Type' => 'application/problem+json'], $this->getRawError400ResponsePaymentMethod())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionCode(0);
+        $this->expectExceptionMessage('Invalid value for enum \'\Foxdeli\ApiPhpSdk\Model\PaymentMethod\', must be one of: \'CASH_ON_DELIVERY\', \'BANK_TRANSFER\', \'CARD\', \'CRYPTO\', \'OTHER\'');
+
+        $orderUpdate = new OrderUpdate();
+        $orderUpdate->setPayment((new PaymentRequest())->setMethod('CASH_ON_DELIVER'));
+        $tracking->updateOrder('22222222-2222-2222-2222-222222222222', $orderUpdate);
+
+    }
+
+    public function testWith400ResponsePaymentMethodFakeRequest(): void
+    {
+        $mock = new MockHandler([
+            new Response(400, ['Content-Type' => 'application/problem+json'], $this->getRawError400ResponsePaymentMethod())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(400);
+        $this->expectExceptionMessage('Bad Request');
+
+        $orderUpdate = new OrderUpdate();
+        $orderUpdate->setOrderNumber('A123456789ABCDE');
+        $tracking->updateOrder('22222222-2222-2222-2222-222222222222', $orderUpdate);
+
+    }
+
+    public function testWith401Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(401, ['Content-Type' => 'application/problem+json'], $this->getRawError401Response())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(401);
+        $this->expectExceptionMessage('The Token has expired on 2024-01-02T03:04:05Z.');
+
+        $orderUpdate = new OrderUpdate();
+        $orderUpdate->setOrderNumber('A123456789ABCDE');
+        $tracking->updateOrder('22222222-2222-2222-2222-222222222222', $orderUpdate);
+
+    }
+
+    public function testWith403Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(403, ['Content-Type' => 'application/problem+json'], $this->getRawError403Response())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(403);
+        $this->expectExceptionMessage('Forbidden operation');
+
+        $orderUpdate = new OrderUpdate();
+        $orderUpdate->setOrderNumber('A123456789ABCDE');
+        $tracking->updateOrder('22222222-2222-2222-2222-222222222222', $orderUpdate);
+
+    }
+
+    public function testWith404Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(404, ['Content-Type' => 'application/problem+json'], $this->getRawError404Response())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(404);
+        $this->expectExceptionMessage('Order was not found');
+
+        $orderUpdate = new OrderUpdate();
+        $orderUpdate->setOrderNumber('A123456789ABCDE');
+        $tracking->updateOrder('22222222-2222-2222-2222-222222222222', $orderUpdate);
+
+    }
+
+    public function testWith415Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(415, ['Content-Type' => 'application/problem+json'], $this->getRawError415Response())
+        ]);
+
+        $tracking = new Tracking(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(415);
+        $this->expectExceptionMessage('Unsupported Media Type');
+
+        $orderUpdate = new OrderUpdate();
+        $orderUpdate->setOrderNumber('A123456789ABCDE');
+        $tracking->updateOrder('22222222-2222-2222-2222-222222222222', $orderUpdate);
+    }
+
+    private function getRawError400ResponseOrderId() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Constraint violation",
+            "status": 400,
+            "detail": "updateOrder.orderId: must be a valid UUID",
+            "instance": "/tracking/api/v1/order/22222222-2222-2222-2222-222222222222a",
+            "violations": {
+                "updateOrder.orderId": "must be a valid UUID"
+            }
+        }';
+    }
+
+    private function getRawError400ResponsePaymentMethod() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Bad Request",
+            "status": 400,
+            "detail": "Failed to read request",
+            "instance": "/tracking/api/v1/order/22222222-2222-2222-2222-222222222222",
+            "violations": {
+                "payment.method": "Invalid value: CASH_ON_DELIVER. Value must be one of: BANK_TRANSFER, CARD, CASH_ON_DELIVERY, CRYPTO, OTHER"
+            }
+        }';
+    }
+
+    private function getRawError401Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "The Token has expired on 2024-01-02T03:04:05Z.",
+            "status": 401,
+            "detail": "The Token has expired on 2024-01-02T03:04:05Z.",
+            "instance": "/tracking/api/v1/order/22222222-2222-2222-2222-222222222222"
+        }';
+    }
+
+    private function getRawError403Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Forbidden operation",
+            "status": 403,
+            "detail": "Account is not owner of resource ORDER with id 11111111-1111-1111-1111-111111111111",
+            "instance": "/tracking/api/v1/order/22222222-2222-2222-2222-222222222222",
+            "resourceType": "ORDER",
+            "resourceId": "11111111-1111-1111-1111-111111111111"
+          }';
+    }
+
+    private function getRawError404Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Order was not found",
+            "status": 404,
+            "detail": "Order with id 33333333-3333-3333-3333-333333333333 doesn\'t exist",
+            "instance": "/tracking/api/v1/order/33333333-3333-3333-3333-333333333333",
+            "resourceType": "Order",
+            "resourceId": "33333333-3333-3333-3333-333333333333",
+            "resourceIdName": "id"
+          }';
+    }
+
+    private function getRawError415Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Unsupported Media Type",
+            "status": 415,
+            "detail": "Content-Type \'text/plain;charset=UTF-8\' is not supported.",
+            "instance": "/tracking/api/v1/order"
         }';
     }
 }
