@@ -180,7 +180,6 @@ final class FindByExternalIdTest extends TestCase
         }';
     }
 
-
     public function testWith400Response(): void
     {
         $mock = new MockHandler([
@@ -280,10 +279,10 @@ final class FindByExternalIdTest extends TestCase
             "type": "about:blank",
             "title": "Constraint violation",
             "status": 400,
-            "detail": "cancelOrder.orderId: must be a valid UUID",
-            "instance": "/tracking/api/v1/order/11111111-1111-1111-1111-111111111111/cancel",
+            "detail": "findOrderByExternalId.eshopId: must be a valid UUID",
+            "instance": "/tracking/api/v1/order",
             "violations": {
-                "cancelOrder.orderId": "must be a valid UUID"
+                "findOrderByExternalId.eshopId": "must be a valid UUID"
             }
         }';
     }
