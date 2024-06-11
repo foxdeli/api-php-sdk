@@ -146,7 +146,7 @@ final class UploadOrderInvoiceTest extends TestCase
             "title": "Constraint violation",
             "status": 400,
             "detail": "uploadInvoice.orderId: must be a valid UUID",
-            "instance": "/tracking/api/v1/order/11111111-1111-1111-1111-111111111111",
+            "instance": "/tracking/api/v1/order/11111111-1111-1111-1111-111111111111/invoice",
             "violations": {
                 "uploadInvoice.orderId": "must be a valid UUID"
             }
@@ -159,7 +159,7 @@ final class UploadOrderInvoiceTest extends TestCase
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
             "status": 401,
             "detail": "The Token has expired on 2024-01-02T03:04:05Z.",
-            "instance": "/tracking/api/v1/order"
+            "instance": "/tracking/api/v1/order/11111111-1111-1111-1111-111111111111/invoice"
         }';
     }
 
