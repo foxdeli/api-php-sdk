@@ -215,10 +215,10 @@ final class GetPickupPlaceTest extends TestCase
             "type": "about:blank",
             "title": "Constraint violation",
             "status": 400,
-            "detail": "getAllEshopPickupPlaces.eshopId: must be a valid UUID",
+            "detail": "getPickupPlace.eshopId: must be a valid UUID",
             "instance": "/pickup-place/api/v1/pickup-place",
             "violations": {
-                "getAllEshopPickupPlaces.eshopId": "must be a valid UUID"
+                "getPickupPlace.eshopId": "must be a valid UUID"
             }
         }';
     }
