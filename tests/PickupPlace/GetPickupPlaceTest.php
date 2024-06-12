@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\PickupPlace;
 
+use Exception;
 use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
 use Foxdeli\ApiPhpSdk\PickupPlace;
@@ -173,6 +174,24 @@ final class GetPickupPlaceTest extends TestCase
         $pickupPlace->getPickupPlace("11111111-1111-1111-1111-111111111111");
     }
 
+    public function testWith404Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(404, ['Content-Type' => 'application/problem+json'], $this->getRawError404Response())
+        ]);
+
+        $pickupPlace = new PickupPlace(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(404);
+        $this->expectExceptionMessage('Pickup place not found.');
+
+        $pickupPlace->getPickupPlace("33333333-3333-3333-3333-333333333333");
+    }
+
     public function testWith415Response(): void
     {
         $mock = new MockHandler([
@@ -210,7 +229,7 @@ final class GetPickupPlaceTest extends TestCase
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
             "status": 401,
             "detail": "The Token has expired on 2024-01-02T03:04:05Z.",
-            "instance": "/pickup-place/api/v1/pickup-place",
+            "instance": "/pickup-place/api/v1/pickup-place/11111111-1111-1111-1111-111111111111"
         }';
     }
 
@@ -219,9 +238,20 @@ final class GetPickupPlaceTest extends TestCase
             "type": "about:blank",
             "title": "Eshop not found",
             "status": 403,
-            "detail": "Eshop with id 33333333-3333-3333-3333-333333333333 doesn\'t exist in this account.",
-            "instance": "/pickup-place/api/v1/pickup-place",
-            "eshopId": "33333333-3333-3333-3333-333333333333"
+            "detail": "Eshop with id 44444444-4444-4444-4444-444444444444 doesn\'t exist in this account.",
+            "instance": "/pickup-place/api/v1/pickup-place/44444444-4444-4444-4444-444444444444",
+            "eshopId": "44444444-4444-4444-4444-444444444444"
+        }';
+    }
+
+    private function getRawError404Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Pickup place not found.",
+            "status": 404,
+            "detail": "Pickup place with the following identification was not found. UUID: 33333333-3333-3333-3333-333333333333.",
+            "instance": "/pickup-place/api/v1/pickup-place/33333333-3333-3333-3333-333333333333",
+            "id": "33333333-3333-3333-3333-333333333333"
         }';
     }
 
