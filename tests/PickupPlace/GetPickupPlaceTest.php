@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\PickupPlace;
 
+use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
 use Foxdeli\ApiPhpSdk\PickupPlace;
 use Foxdeli\ApiPhpSdk\Model\DestinationType;
@@ -114,6 +115,123 @@ final class GetPickupPlaceTest extends TestCase
                     }
                 ]
             }
+        }';
+    }
+
+    public function testWith400Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(400, ['Content-Type' => 'application/problem+json'], $this->getRawError400Response())
+        ]);
+
+        $pickupPlace = new PickupPlace(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(400);
+        $this->expectExceptionMessage('Bad Request');
+
+        $pickupPlace->getPickupPlace("11111111-1111-1111-1111-111111111111");
+    }
+
+    public function testWith401Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(401, ['Content-Type' => 'application/problem+json'], $this->getRawError401Response())
+        ]);
+
+        $pickupPlace = new PickupPlace(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(401);
+        $this->expectExceptionMessage('The Token has expired on 2024-01-02T03:04:05Z.');
+
+        $pickupPlace->getPickupPlace("11111111-1111-1111-1111-111111111111");
+
+    }
+
+    public function testWith403Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(403, ['Content-Type' => 'application/problem+json'], $this->getRawError403Response())
+        ]);
+
+        $pickupPlace = new PickupPlace(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(403);
+        $this->expectExceptionMessage('Eshop not found');
+
+        $pickupPlace->getPickupPlace("11111111-1111-1111-1111-111111111111");
+    }
+
+    public function testWith415Response(): void
+    {
+        $mock = new MockHandler([
+            new Response(415, ['Content-Type' => 'application/problem+json'], $this->getRawError415Response())
+        ]);
+
+        $pickupPlace = new PickupPlace(
+            new Client(['handler' => HandlerStack::create($mock)]),
+            (new Configuration())
+        );
+
+        $this->expectException(ApiException::class);
+        $this->expectExceptionCode(415);
+        $this->expectExceptionMessage('Unsupported Media Type');
+
+        $pickupPlace->getPickupPlace("11111111-1111-1111-1111-111111111111");
+    }
+
+    private function getRawError400Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Constraint violation",
+            "status": 400,
+            "detail": "getAllEshopPickupPlaces.eshopId: must be a valid UUID",
+            "instance": "/pickup-place/api/v1/pickup-place",
+            "violations": {
+                "getAllEshopPickupPlaces.eshopId": "must be a valid UUID"
+            }
+        }';
+    }
+
+    private function getRawError401Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "The Token has expired on 2024-01-02T03:04:05Z.",
+            "status": 401,
+            "detail": "The Token has expired on 2024-01-02T03:04:05Z.",
+            "instance": "/pickup-place/api/v1/pickup-place",
+        }';
+    }
+
+    private function getRawError403Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Eshop not found",
+            "status": 403,
+            "detail": "Eshop with id 33333333-3333-3333-3333-333333333333 doesn\'t exist in this account.",
+            "instance": "/pickup-place/api/v1/pickup-place",
+            "eshopId": "33333333-3333-3333-3333-333333333333"
+        }';
+    }
+
+    private function getRawError415Response() : string {
+        return '{
+            "type": "about:blank",
+            "title": "Unsupported Media Type",
+            "status": 415,
+            "detail": "Content-Type \'text/plain;charset=UTF-8\' is not supported.",
+            "instance": "/pickup-place/api/v1/pickup-place",
         }';
     }
 }

@@ -304,7 +304,6 @@ final class CreatePickupPlaceTest extends TestCase
         }';
     }
 
-
     private function getRawError415Response() : string {
         return '{
             "type": "about:blank",
