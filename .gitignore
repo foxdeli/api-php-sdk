@@ -14,4 +14,4 @@ composer.phar
 .phpunit.result.cache
 
 # Ignore composer lock because mltiple PHP versions
-.composer.lock
+composer.lock
