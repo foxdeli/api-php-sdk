@@ -43,7 +43,6 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: "7.2"
-          version: "2.2"
 
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v3
@@ -70,7 +69,6 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: "7.3"
-          version: "2.2"
 
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v3
@@ -97,7 +95,6 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: "7.4"
-          version: "2.2"
 
       - name: PHPStan Static Analysis
         uses: php-actions/phpstan@v3
@@ -113,4 +110,30 @@ jobs:
           bootstrap: vendor/autoload.php
           configuration: tests/phpunit.xml
           php_version: "7.4"
+          version: "9.6"
+
+  php80:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: php-actions/composer@v6
+        with:
+          php_version: "8.0"
+
+      - name: PHPStan Static Analysis
+        uses: php-actions/phpstan@v3
+        with:
+          path: lib/ tests/
+          php_version: "8.0"
+          level: 8
+          configuration: phpstan.neon
+
+      - name: PHPUnit
+        uses: php-actions/phpunit@v3
+        with:
+          bootstrap: vendor/autoload.php
+          configuration: tests/phpunit.xml
+          php_version: "8.0"
           version: "9.6"
