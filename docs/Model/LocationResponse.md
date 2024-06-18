@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **region** | **string** | optional address region | [optional]
 **state** | **string** | optional address state | [optional]
 **zip_code** | **string** |  | [optional]
-**gps** | [**\Foxdeli\ApiPhpSdk\Model\GPS**](GPS.md) |  | [optional]
+**gps** | [**\Foxdeli\ApiPhpSdk\Model\Gps**](Gps.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

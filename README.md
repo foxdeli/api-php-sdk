@@ -12,8 +12,7 @@ The documentation for the Foxdeli API can be found [here](https://api.foxdeli.co
 
 ### Requirements
 
-PHP between 7.1 and 7.4.
-Should also work with PHP 8.0 but has not been tested.
+PHP 7.1+ (tested until 8.3)
 
 ### Composer
 
@@ -52,14 +51,14 @@ Please follow the [installation procedure](#installation--usage) and then run th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Init Foxdeli class using your username & password 
+// Init Foxdeli class using your username & password
 $foxdeli = \Foxdeli\ApiPhpSdk\Foxdeli::init("username", "password");
 
 $order_id = 'order_id_example'; // string | id of order
 
 try {
     $result = $foxdeli->findOrderById($order_id);
-    print_r($result); 
+    print_r($result);
 } catch (\Foxdeli\ApiPhpSdk\ApiException $e) {
     echo 'Exception when calling Foxdeli->findOrderById: ', $e->getMessage(), PHP_EOL;
     echo 'With more detail in '. $e->getResponseBody(), PHP_EOL;
@@ -78,6 +77,8 @@ Endpoints are split into four different domains:
 - [[Pickup place]](docs/PickupPlace.md)
 
 ## Models
+
+List of all models used in API
 
 - [AdditionalCost](docs/Model/AdditionalCost.md)
 - [AdditionalCostRequest](docs/Model/AdditionalCostRequest.md)
@@ -172,7 +173,7 @@ Endpoints are split into four different domains:
 
 ## Tests
 
-Project can be testen via unit test and PHPStan analysis 
+Project can be tested via unit tests and PHPStan analysis
 
 To run the tests, use:
 
@@ -181,3 +182,7 @@ composer install
 composer tests
 composer phpstan
 ```
+
+## Example
+
+One long example can be found [HERE](docs/example.md)
