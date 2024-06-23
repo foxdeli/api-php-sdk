@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**weight** | **double** | weight in kg | [optional]
+**weight** | **float** | weight in kg | [optional]
 **height** | **int** | height in cm | [optional]
 **length** | **int** | length in cm | [optional]
 **width** | **int** | width in cm | [optional]

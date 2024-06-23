@@ -9,9 +9,13 @@ composer.phar
 
 # php-cs-fixer cache
 .php_cs.cache
+.php-cs-fixer.cache
 
 # PHPUnit cache
 .phpunit.result.cache
 
-# Ignore composer lock because mltiple PHP versions
+# Enable creating local composer.lock based on PHP version
 composer.lock
+
+# Ignore generator files
+.openapi-generator/
