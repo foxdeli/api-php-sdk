@@ -16,7 +16,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
-final class FindByExternalIdTest extends TestCase
+final class FindOrderByExternalIdTest extends TestCase
 {
     public function testWithValidAuthorization(): void
     {
