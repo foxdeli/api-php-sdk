@@ -372,7 +372,7 @@ class JsonNullableString implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -386,7 +386,7 @@ class JsonNullableString implements ModelInterface, ArrayAccess, \JsonSerializab
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
-        if($string){
+        if($string) {
             return $string;
         }
         return "";

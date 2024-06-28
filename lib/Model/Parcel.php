@@ -933,7 +933,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -947,7 +947,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
-        if($string){
+        if($string) {
             return $string;
         }
         return "";

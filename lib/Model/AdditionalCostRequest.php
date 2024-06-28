@@ -455,7 +455,7 @@ class AdditionalCostRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -469,7 +469,7 @@ class AdditionalCostRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
-        if($string){
+        if($string) {
             return $string;
         }
         return "";

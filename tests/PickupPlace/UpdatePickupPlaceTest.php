@@ -6,7 +6,6 @@ namespace Tests\Tracking;
 
 use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
-use Foxdeli\ApiPhpSdk\PickupPlace;
 use Foxdeli\ApiPhpSdk\Model\DestinationType;
 use Foxdeli\ApiPhpSdk\Model\ExceptionallyOpeningHoursRequest;
 use Foxdeli\ApiPhpSdk\Model\Gps;
@@ -16,6 +15,7 @@ use Foxdeli\ApiPhpSdk\Model\OpeningHoursRequest;
 use Foxdeli\ApiPhpSdk\Model\PickupPlaceResponse;
 use Foxdeli\ApiPhpSdk\Model\PickupPlaceUpdate;
 use Foxdeli\ApiPhpSdk\Model\RegularOpeningHoursRequest;
+use Foxdeli\ApiPhpSdk\PickupPlace;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -45,7 +45,8 @@ final class UpdatePickupPlaceTest extends TestCase
         $this->assertSame("PARCEL_BOX_1_1", $pickupPlace->getOriginPickupPlaceId());
     }
 
-    private function getPickupPlaceUpdate() : PickupPlaceUpdate {
+    private function getPickupPlaceUpdate(): PickupPlaceUpdate
+    {
         $pickupPlaceUpdate = new PickupPlaceUpdate();
         $pickupPlaceUpdate
             ->setOriginPickupPlaceId('PARCEL_BOX_1_1')
@@ -60,7 +61,7 @@ final class UpdatePickupPlaceTest extends TestCase
                 ->setState("Michigan")
                 ->setRegion("Michigan")
                 ->setGps(
-                    (new Gps)
+                    (new Gps())
                     ->setLongitude(50.0933864)
                     ->setLatitude(14.4542789)
                 )
@@ -97,7 +98,8 @@ final class UpdatePickupPlaceTest extends TestCase
         return $pickupPlaceUpdate;
     }
 
-    private function getRawResponse() : string {
+    private function getRawResponse(): string
+    {
         return '{
             "id": "11111111-1111-1111-1111-111111111111",
             "eshopId": "22222222-2222-2222-2222-222222222222",
@@ -278,7 +280,8 @@ final class UpdatePickupPlaceTest extends TestCase
         $pickupPlace->updatePickupPlace("11111111-1111-1111-1111-111111111111", $this->getPickupPlaceUpdate());
     }
 
-    private function getRawError400Response() : string {
+    private function getRawError400Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Constraint violation",
@@ -291,7 +294,8 @@ final class UpdatePickupPlaceTest extends TestCase
         }';
     }
 
-    private function getRawError401Response() : string {
+    private function getRawError401Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
@@ -301,7 +305,8 @@ final class UpdatePickupPlaceTest extends TestCase
         }';
     }
 
-    private function getRawError403Response() : string {
+    private function getRawError403Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Eshop not found",
@@ -312,7 +317,8 @@ final class UpdatePickupPlaceTest extends TestCase
         }';
     }
 
-    private function getRawError404Response() : string {
+    private function getRawError404Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Pickup place not found.",
@@ -323,7 +329,8 @@ final class UpdatePickupPlaceTest extends TestCase
         }';
     }
 
-    private function getRawError415Response() : string {
+    private function getRawError415Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Unsupported Media Type",

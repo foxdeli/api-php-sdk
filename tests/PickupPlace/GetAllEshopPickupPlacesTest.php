@@ -6,8 +6,8 @@ namespace Tests\PickupPlace;
 
 use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
-use Foxdeli\ApiPhpSdk\PickupPlace;
 use Foxdeli\ApiPhpSdk\Model\CollectionResponsePickupPlaceResponse;
+use Foxdeli\ApiPhpSdk\PickupPlace;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -32,7 +32,7 @@ final class GetAllEshopPickupPlacesTest extends TestCase
 
         $this->assertInstanceOf(CollectionResponsePickupPlaceResponse::class, $pickupPlaces);
         $items = $pickupPlaces->getItems();
-        if(is_null($items)){
+        if(is_null($items)) {
             $this->fail("Array of PickupPlaceResponse expected");
         } else {
             $this->assertCount(2, $items);
@@ -43,7 +43,8 @@ final class GetAllEshopPickupPlacesTest extends TestCase
         }
     }
 
-    private function getRawResponse() : string {
+    private function getRawResponse(): string
+    {
         return '{
             "items": [
               {
@@ -288,7 +289,8 @@ final class GetAllEshopPickupPlacesTest extends TestCase
         $pickupPlace->getAllEshopPickupPlaces("22222222-2222-2222-2222-222222222222");
     }
 
-    private function getRawError400Response() : string {
+    private function getRawError400Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Constraint violation",
@@ -301,7 +303,8 @@ final class GetAllEshopPickupPlacesTest extends TestCase
         }';
     }
 
-    private function getRawError401Response() : string {
+    private function getRawError401Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
@@ -311,7 +314,8 @@ final class GetAllEshopPickupPlacesTest extends TestCase
         }';
     }
 
-    private function getRawError403Response() : string {
+    private function getRawError403Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Eshop not found",
@@ -322,7 +326,8 @@ final class GetAllEshopPickupPlacesTest extends TestCase
         }';
     }
 
-    private function getRawError415Response() : string {
+    private function getRawError415Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Unsupported Media Type",

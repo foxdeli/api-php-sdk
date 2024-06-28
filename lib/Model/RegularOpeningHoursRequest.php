@@ -575,7 +575,7 @@ class RegularOpeningHoursRequest implements ModelInterface, ArrayAccess, \JsonSe
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -589,7 +589,7 @@ class RegularOpeningHoursRequest implements ModelInterface, ArrayAccess, \JsonSe
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
-        if($string){
+        if($string) {
             return $string;
         }
         return "";

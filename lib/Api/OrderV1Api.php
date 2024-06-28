@@ -27,6 +27,10 @@
 
 namespace Foxdeli\ApiPhpSdk\Api;
 
+use Foxdeli\ApiPhpSdk\ApiException;
+use Foxdeli\ApiPhpSdk\Configuration;
+use Foxdeli\ApiPhpSdk\HeaderSelector;
+use Foxdeli\ApiPhpSdk\ObjectSerializer;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -34,10 +38,6 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Foxdeli\ApiPhpSdk\ApiException;
-use Foxdeli\ApiPhpSdk\Configuration;
-use Foxdeli\ApiPhpSdk\HeaderSelector;
-use Foxdeli\ApiPhpSdk\ObjectSerializer;
 
 /**
  * OrderV1Api Class Doc Comment
@@ -220,11 +220,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -255,11 +255,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -290,11 +290,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -325,11 +325,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -360,11 +360,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -395,11 +395,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\Order' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -432,11 +432,11 @@ class OrderV1Api
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
                     try {
-                        if(defined('JSON_THROW_ON_ERROR')){
+                        if(defined('JSON_THROW_ON_ERROR')) {
                             $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         } else {
                             $decodedContent = json_decode($content, false, 512);
-                            if(!$decodedContent){
+                            if(!$decodedContent) {
                                 throw new \JsonException();
                             }
                             $content = $decodedContent;
@@ -763,11 +763,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -798,11 +798,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -833,11 +833,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -868,11 +868,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -903,11 +903,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\Order' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -940,11 +940,11 @@ class OrderV1Api
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
                     try {
-                        if(defined('JSON_THROW_ON_ERROR')){
+                        if(defined('JSON_THROW_ON_ERROR')) {
                             $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         } else {
                             $decodedContent = json_decode($content, false, 512);
-                            if(!$decodedContent){
+                            if(!$decodedContent) {
                                 throw new \JsonException();
                             }
                             $content = $decodedContent;
@@ -1130,7 +1130,7 @@ class OrderV1Api
         if (isset($order_registration)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                if(PHP_VERSION_ID < 70200){
+                if(PHP_VERSION_ID < 70200) {
                     $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($order_registration));
                 } else {
                     $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($order_registration));
@@ -1268,11 +1268,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1303,11 +1303,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1338,11 +1338,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1373,11 +1373,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1408,11 +1408,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\Order' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1443,11 +1443,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1480,11 +1480,11 @@ class OrderV1Api
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
                     try {
-                        if(defined('JSON_THROW_ON_ERROR')){
+                        if(defined('JSON_THROW_ON_ERROR')) {
                             $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         } else {
                             $decodedContent = json_decode($content, false, 512);
-                            if(!$decodedContent){
+                            if(!$decodedContent) {
                                 throw new \JsonException();
                             }
                             $content = $decodedContent;
@@ -1831,11 +1831,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1866,11 +1866,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1901,11 +1901,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1936,11 +1936,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1971,11 +1971,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\Order' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2006,11 +2006,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2043,11 +2043,11 @@ class OrderV1Api
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
                     try {
-                        if(defined('JSON_THROW_ON_ERROR')){
+                        if(defined('JSON_THROW_ON_ERROR')) {
                             $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         } else {
                             $decodedContent = json_decode($content, false, 512);
-                            if(!$decodedContent){
+                            if(!$decodedContent) {
                                 throw new \JsonException();
                             }
                             $content = $decodedContent;
@@ -2374,11 +2374,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2409,11 +2409,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2444,11 +2444,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2479,11 +2479,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2514,11 +2514,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\CollectionResponseCountryCode' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2551,11 +2551,11 @@ class OrderV1Api
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
                     try {
-                        if(defined('JSON_THROW_ON_ERROR')){
+                        if(defined('JSON_THROW_ON_ERROR')) {
                             $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         } else {
                             $decodedContent = json_decode($content, false, 512);
-                            if(!$decodedContent){
+                            if(!$decodedContent) {
                                 throw new \JsonException();
                             }
                             $content = $decodedContent;
@@ -2877,11 +2877,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2912,11 +2912,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2947,11 +2947,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2982,11 +2982,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -3017,11 +3017,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\Order' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -3052,11 +3052,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -3089,11 +3089,11 @@ class OrderV1Api
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
                     try {
-                        if(defined('JSON_THROW_ON_ERROR')){
+                        if(defined('JSON_THROW_ON_ERROR')) {
                             $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         } else {
                             $decodedContent = json_decode($content, false, 512);
-                            if(!$decodedContent){
+                            if(!$decodedContent) {
                                 throw new \JsonException();
                             }
                             $content = $decodedContent;
@@ -3305,7 +3305,7 @@ class OrderV1Api
         if (isset($order_update)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                if(PHP_VERSION_ID < 70200){
+                if(PHP_VERSION_ID < 70200) {
                     $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($order_update));
                 } else {
                     $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($order_update));
@@ -3443,11 +3443,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -3478,11 +3478,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -3513,11 +3513,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -3548,11 +3548,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -3583,11 +3583,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\FileInfo' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -3620,11 +3620,11 @@ class OrderV1Api
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
                     try {
-                        if(defined('JSON_THROW_ON_ERROR')){
+                        if(defined('JSON_THROW_ON_ERROR')) {
                             $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         } else {
                             $decodedContent = json_decode($content, false, 512);
-                            if(!$decodedContent){
+                            if(!$decodedContent) {
                                 throw new \JsonException();
                             }
                             $content = $decodedContent;
@@ -3967,11 +3967,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -4002,11 +4002,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -4037,11 +4037,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -4072,11 +4072,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -4107,11 +4107,11 @@ class OrderV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\FileInfo' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -4144,11 +4144,11 @@ class OrderV1Api
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
                     try {
-                        if(defined('JSON_THROW_ON_ERROR')){
+                        if(defined('JSON_THROW_ON_ERROR')) {
                             $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         } else {
                             $decodedContent = json_decode($content, false, 512);
-                            if(!$decodedContent){
+                            if(!$decodedContent) {
                                 throw new \JsonException();
                             }
                             $content = $decodedContent;

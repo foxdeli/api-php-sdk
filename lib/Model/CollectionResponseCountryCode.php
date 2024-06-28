@@ -338,8 +338,8 @@ class CollectionResponseCountryCode implements ModelInterface, ArrayAccess, \Jso
             array_push($this->openAPINullablesSetToNull, 'page');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('page', $nullablesSetToNull);
-            if ($index !== FALSE) {
+            $index = array_search('page', $nullablesSetToNull, true);
+            if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->openAPINullablesSetToNull = $nullablesSetToNull;
             }
@@ -412,7 +412,7 @@ class CollectionResponseCountryCode implements ModelInterface, ArrayAccess, \Jso
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -426,7 +426,7 @@ class CollectionResponseCountryCode implements ModelInterface, ArrayAccess, \Jso
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
-        if($string){
+        if($string) {
             return $string;
         }
         return "";

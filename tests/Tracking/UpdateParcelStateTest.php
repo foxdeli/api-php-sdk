@@ -9,7 +9,6 @@ use DateTime;
 use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
 use Foxdeli\ApiPhpSdk\Customer;
-use Foxdeli\ApiPhpSdk\Tracking;
 use Foxdeli\ApiPhpSdk\Model\Carrier;
 use Foxdeli\ApiPhpSdk\Model\DeliveryDetailsRequest;
 use Foxdeli\ApiPhpSdk\Model\DeliveryStateRequest;
@@ -20,6 +19,7 @@ use Foxdeli\ApiPhpSdk\Model\ParcelRegistration;
 use Foxdeli\ApiPhpSdk\Model\ParcelStateUpdate;
 use Foxdeli\ApiPhpSdk\Model\ParcelTrackingConfigRequest;
 use Foxdeli\ApiPhpSdk\Model\ParcelUpdate;
+use Foxdeli\ApiPhpSdk\Tracking;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -46,26 +46,27 @@ final class UpdateParcelStateTest extends TestCase
         $this->assertInstanceOf(Parcel::class, $parcel);
         $this->assertSame("33333333-3333-3333-3333-333333333333", $parcel->getOrderId());
         $this->assertSame("22222222-2222-2222-2222-222222222222", $parcel->getId());
-        if($state = $parcel->getState()){
+        if($state = $parcel->getState()) {
             $this->assertSame("ESHOP_PROCESSING", $state->getDelivery());
         } else {
             $this->fail("Dimensions should be set up");
         }
-        if($dimensions = $parcel->getDimensions()){
+        if($dimensions = $parcel->getDimensions()) {
             $this->assertSame(101, $dimensions->getHeight());
             $this->assertSame(51, $dimensions->getLength());
             $this->assertSame(26, $dimensions->getWidth());
         } else {
             $this->fail("Dimensions should be set up");
         }
-        if($externalCreated = $parcel->getExternalCreated()){
+        if($externalCreated = $parcel->getExternalCreated()) {
             $this->assertSame("2024-05-28T13:31:43+00:00", $externalCreated->format('c'));
         } else {
             $this->fail("External date not passed");
         }
     }
 
-    private function getParcelStateUpdate() : ParcelStateUpdate {
+    private function getParcelStateUpdate(): ParcelStateUpdate
+    {
         $parcelUpdate = new ParcelStateUpdate();
         $parcelUpdate
             ->setState(DeliveryStateRequest::ESHOP_PROCESSING)
@@ -75,7 +76,8 @@ final class UpdateParcelStateTest extends TestCase
         return $parcelUpdate;
     }
 
-    private function getRawResponse() : string {
+    private function getRawResponse(): string
+    {
         return '{
             "id": "22222222-2222-2222-2222-222222222222",
             "orderId": "33333333-3333-3333-3333-333333333333",
@@ -269,7 +271,8 @@ final class UpdateParcelStateTest extends TestCase
         $tracking->updateParcelState('33333333-3333-3333-3333-333333333333', "22222222-2222-2222-2222-222222222222", $this->getParcelStateUpdate());
     }
 
-    private function getRawError400Response() : string {
+    private function getRawError400Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Constraint violation",
@@ -282,7 +285,8 @@ final class UpdateParcelStateTest extends TestCase
         }';
     }
 
-    private function getRawError401Response() : string {
+    private function getRawError401Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
@@ -292,7 +296,8 @@ final class UpdateParcelStateTest extends TestCase
         }';
     }
 
-    private function getRawError403Response() : string {
+    private function getRawError403Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Forbidden operation",
@@ -304,7 +309,8 @@ final class UpdateParcelStateTest extends TestCase
         }';
     }
 
-    private function getRawError404OrderResponse() : string {
+    private function getRawError404OrderResponse(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Order was not found",
@@ -315,7 +321,8 @@ final class UpdateParcelStateTest extends TestCase
         }';
     }
 
-    private function getRawError404ParcelResponse() : string {
+    private function getRawError404ParcelResponse(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Parcel was not found",
@@ -328,7 +335,8 @@ final class UpdateParcelStateTest extends TestCase
         }';
     }
 
-    private function getRawError415Response() : string {
+    private function getRawError415Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Unsupported Media Type",

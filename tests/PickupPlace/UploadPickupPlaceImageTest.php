@@ -6,8 +6,8 @@ namespace Tests\Tracking;
 
 use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
-use Foxdeli\ApiPhpSdk\PickupPlace;
 use Foxdeli\ApiPhpSdk\Model\FileInfo;
+use Foxdeli\ApiPhpSdk\PickupPlace;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -36,7 +36,8 @@ final class UploadPickupPlaceImageTest extends TestCase
         $this->assertSame(491291, $fileInfo->getSize());
     }
 
-    private function getRawResponse() : string {
+    private function getRawResponse(): string
+    {
         return '{
             "id": "image",
             "path": "pickup-places/22222222-2222-2222-2222-222222222222/image.png",
@@ -121,7 +122,8 @@ final class UploadPickupPlaceImageTest extends TestCase
         $pickupPlace->uploadPickupPlaceImage('22222222-2222-2222-2222-222222222222', __DIR__ . '/../foxdeli-intro.en-03-04-2023.pdf');
     }
 
-    private function getRawError400Response() : string {
+    private function getRawError400Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Constraint violation",
@@ -134,7 +136,8 @@ final class UploadPickupPlaceImageTest extends TestCase
         }';
     }
 
-    private function getRawError401Response() : string {
+    private function getRawError401Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
@@ -144,7 +147,8 @@ final class UploadPickupPlaceImageTest extends TestCase
         }';
     }
 
-    private function getRawError404Response() : string {
+    private function getRawError404Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Pickup place not found.",
@@ -155,7 +159,8 @@ final class UploadPickupPlaceImageTest extends TestCase
         }';
     }
 
-    private function getRawError415Response() : string {
+    private function getRawError415Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Unsupported Media Type",

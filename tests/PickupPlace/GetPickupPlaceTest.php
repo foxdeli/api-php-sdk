@@ -7,7 +7,6 @@ namespace Tests\PickupPlace;
 use Exception;
 use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
-use Foxdeli\ApiPhpSdk\PickupPlace;
 use Foxdeli\ApiPhpSdk\Model\DestinationType;
 use Foxdeli\ApiPhpSdk\Model\ExceptionallyOpeningHoursRequest;
 use Foxdeli\ApiPhpSdk\Model\Gps;
@@ -18,6 +17,7 @@ use Foxdeli\ApiPhpSdk\Model\Parcel;
 use Foxdeli\ApiPhpSdk\Model\PickupPlaceCreate;
 use Foxdeli\ApiPhpSdk\Model\PickupPlaceResponse;
 use Foxdeli\ApiPhpSdk\Model\RegularOpeningHoursRequest;
+use Foxdeli\ApiPhpSdk\PickupPlace;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -45,7 +45,8 @@ final class GetPickupPlaceTest extends TestCase
         $this->assertSame("22222222-2222-2222-2222-222222222222", $pickupPlace->getEshopId());
     }
 
-    private function getRawResponse() : string {
+    private function getRawResponse(): string
+    {
         return '{
             "id": "11111111-1111-1111-1111-111111111111",
             "eshopId": "22222222-2222-2222-2222-222222222222",
@@ -210,7 +211,8 @@ final class GetPickupPlaceTest extends TestCase
         $pickupPlace->getPickupPlace("11111111-1111-1111-1111-111111111111");
     }
 
-    private function getRawError400Response() : string {
+    private function getRawError400Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Constraint violation",
@@ -223,7 +225,8 @@ final class GetPickupPlaceTest extends TestCase
         }';
     }
 
-    private function getRawError401Response() : string {
+    private function getRawError401Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
@@ -233,7 +236,8 @@ final class GetPickupPlaceTest extends TestCase
         }';
     }
 
-    private function getRawError403Response() : string {
+    private function getRawError403Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Eshop not found",
@@ -244,7 +248,8 @@ final class GetPickupPlaceTest extends TestCase
         }';
     }
 
-    private function getRawError404Response() : string {
+    private function getRawError404Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Pickup place not found.",
@@ -255,7 +260,8 @@ final class GetPickupPlaceTest extends TestCase
         }';
     }
 
-    private function getRawError415Response() : string {
+    private function getRawError415Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Unsupported Media Type",

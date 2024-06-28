@@ -9,13 +9,13 @@ use DateTime;
 use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
 use Foxdeli\ApiPhpSdk\Customer;
-use Foxdeli\ApiPhpSdk\Tracking;
 use Foxdeli\ApiPhpSdk\Model\Carrier;
 use Foxdeli\ApiPhpSdk\Model\DeliveryDetailsRequest;
 use Foxdeli\ApiPhpSdk\Model\DimensionsRequest;
 use Foxdeli\ApiPhpSdk\Model\Parcel;
 use Foxdeli\ApiPhpSdk\Model\ParcelTrackingConfigRequest;
 use Foxdeli\ApiPhpSdk\Model\ParcelUpdate;
+use Foxdeli\ApiPhpSdk\Tracking;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -40,14 +40,14 @@ final class FindParcelByIdTest extends TestCase
         $this->assertInstanceOf(Parcel::class, $parcel);
         $this->assertSame("33333333-3333-3333-3333-333333333333", $parcel->getOrderId());
         $this->assertSame("22222222-2222-2222-2222-222222222222", $parcel->getId());
-        if($dimensions = $parcel->getDimensions()){
+        if($dimensions = $parcel->getDimensions()) {
             $this->assertSame(101, $dimensions->getHeight());
             $this->assertSame(51, $dimensions->getLength());
             $this->assertSame(26, $dimensions->getWidth());
         } else {
             $this->fail("Dimensions should be set up");
         }
-        if($externalCreated = $parcel->getExternalCreated()){
+        if($externalCreated = $parcel->getExternalCreated()) {
             $this->assertSame("2024-05-28T13:31:43+00:00", $externalCreated->format('c'));
         } else {
             $this->fail("External date not passed");
@@ -55,7 +55,8 @@ final class FindParcelByIdTest extends TestCase
     }
 
 
-    private function getRawResponse() : string {
+    private function getRawResponse(): string
+    {
         return '{
             "id": "22222222-2222-2222-2222-222222222222",
             "orderId": "33333333-3333-3333-3333-333333333333",
@@ -231,7 +232,8 @@ final class FindParcelByIdTest extends TestCase
         $tracking->findParcelById('33333333-3333-3333-3333-333333333333', "22222222-2222-2222-2222-222222222222");
     }
 
-    private function getRawError400Response() : string {
+    private function getRawError400Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Constraint violation",
@@ -244,7 +246,8 @@ final class FindParcelByIdTest extends TestCase
         }';
     }
 
-    private function getRawError401Response() : string {
+    private function getRawError401Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
@@ -254,7 +257,8 @@ final class FindParcelByIdTest extends TestCase
         }';
     }
 
-    private function getRawError403Response() : string {
+    private function getRawError403Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Forbidden operation",
@@ -266,7 +270,8 @@ final class FindParcelByIdTest extends TestCase
         }';
     }
 
-    private function getRawError404OrderResponse() : string {
+    private function getRawError404OrderResponse(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Order was not found",
@@ -277,7 +282,8 @@ final class FindParcelByIdTest extends TestCase
         }';
     }
 
-    private function getRawError404ParcelResponse() : string {
+    private function getRawError404ParcelResponse(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Parcel was not found",
@@ -290,7 +296,8 @@ final class FindParcelByIdTest extends TestCase
         }';
     }
 
-    private function getRawError415Response() : string {
+    private function getRawError415Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Unsupported Media Type",

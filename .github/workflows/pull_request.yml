@@ -112,6 +112,11 @@ jobs:
           php_version: "7.4"
           version: "9.6"
 
+      - name: PHP-CS-Fixer
+        uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php7.4
+        with:
+          args: check --allow-risky=yes
+
   php80:
     runs-on: ubuntu-latest
 
@@ -137,6 +142,11 @@ jobs:
           configuration: tests/phpunit9.xml
           php_version: "8.0"
           version: "9.6"
+
+      - name: PHP-CS-Fixer
+        uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.0
+        with:
+          args: check --allow-risky=yes
 
   php81:
     runs-on: ubuntu-latest
@@ -164,6 +174,11 @@ jobs:
           php_version: "8.1"
           version: "10.5"
 
+      - name: PHP-CS-Fixer
+        uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.1
+        with:
+          args: check --allow-risky=yes
+
   php82:
     runs-on: ubuntu-latest
 
@@ -190,6 +205,11 @@ jobs:
           php_version: "8.2"
           version: "10.5"
 
+      - name: PHP-CS-Fixer
+        uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.2
+        with:
+          args: check --allow-risky=yes
+
   php83:
     runs-on: ubuntu-latest
 
@@ -215,3 +235,9 @@ jobs:
           configuration: tests/phpunit10.xml
           php_version: "8.3"
           version: "10.5"
+
+      - name: PHP-CS-Fixer
+        uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.3
+        with:
+          args: check --allow-risky=yes
+

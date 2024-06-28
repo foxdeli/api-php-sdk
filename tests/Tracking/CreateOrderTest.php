@@ -8,7 +8,6 @@ use DateTime;
 use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
 use Foxdeli\ApiPhpSdk\Customer;
-use Foxdeli\ApiPhpSdk\Tracking;
 use Foxdeli\ApiPhpSdk\Model\AdditionalCostRequest;
 use Foxdeli\ApiPhpSdk\Model\AdditionalCostType;
 use Foxdeli\ApiPhpSdk\Model\AddressRequest;
@@ -26,6 +25,7 @@ use Foxdeli\ApiPhpSdk\Model\PaymentRequest;
 use Foxdeli\ApiPhpSdk\Model\PaymentService;
 use Foxdeli\ApiPhpSdk\Model\ProductRequest;
 use Foxdeli\ApiPhpSdk\Model\ProductType;
+use Foxdeli\ApiPhpSdk\Tracking;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -51,7 +51,7 @@ final class CreateOrderTest extends TestCase
         $this->assertInstanceOf(Order::class, $order);
         $this->assertSame('22222222-2222-2222-2222-222222222222', $order->getId());
         $this->assertSame('CREATED', $order->getOrderState());
-        if($externalCreated = $order->getExternalCreated()){
+        if($externalCreated = $order->getExternalCreated()) {
             $this->assertSame("2024-04-30T09:36:52+00:00", $externalCreated->format('c'));
         } else {
             $this->fail("External date not passed");
@@ -179,7 +179,8 @@ final class CreateOrderTest extends TestCase
 
     }
 
-    private function getOrderRegistration() : OrderRegistration {
+    private function getOrderRegistration(): OrderRegistration
+    {
         $order = new OrderRegistration();
         $order->setEshopId("00000000-0000-0000-0000-000000000000")
             ->setMarketId("11111111-1111-1111-1111-111111111111")
@@ -187,8 +188,8 @@ final class CreateOrderTest extends TestCase
             ->setExternalCreated(new DateTime())
             ->setOrderNumber("A123456788")
             ->setExternalIdentifier("ORD123456778a")
-            ->setPrice((new Money)->setAmount(38.7)->setCurrency("EUR"))
-            ->setCashOnDelivery((new Money)->setAmount(2)->setCurrency("EUR"))
+            ->setPrice((new Money())->setAmount(38.7)->setCurrency("EUR"))
+            ->setCashOnDelivery((new Money())->setAmount(2)->setCurrency("EUR"))
             ->setLanguage(LanguageCode::CS)
             ->setAdditionalCosts([
                 (new AdditionalCostRequest())
@@ -200,20 +201,24 @@ final class CreateOrderTest extends TestCase
                         ->setCurrency("EUR")
                     )
                 ])
-            ->setPayment((new PaymentRequest())
+            ->setPayment(
+                (new PaymentRequest())
                 ->setPaid(false)
                 ->setMethod(PaymentMethod::CASH_ON_DELIVERY)
                 ->setService(PaymentService::PAYPAL)
                 ->setLink("https://pay.me")
             )
-            ->setCustomer((new CustomerRequest())
+            ->setCustomer(
+                (new CustomerRequest())
                 ->setName("John Doe")
                 ->setEmail("johndoe@mail.com")
                 ->setPhone("+420 123 456 789")
             )
-            ->setDestination((new DestinationRequest())
+            ->setDestination(
+                (new DestinationRequest())
                 ->setType(DestinationType::HOUSE_ADDRESS)
-                ->setAddress((new AddressRequest())
+                ->setAddress(
+                    (new AddressRequest())
                     ->setLine1("Sesame street")
                     ->setLine2("11b")
                     ->setCity("MyCoolCity")
@@ -234,10 +239,10 @@ final class CreateOrderTest extends TestCase
                     ->setSku("123")
                     ->setUrl("https://www.foxdeli.com/")
                     ->setImage("https://www.foxdeli.com/img/pages/landing-pages/tabs/delivery-1.png")
-                    ->setPrice((new Money)->setAmount(12)->setCurrency("EUR"))
+                    ->setPrice((new Money())->setAmount(12)->setCurrency("EUR"))
                     ->setVat(1.2)
                     ->setQuantity(1),
-                (new ProductRequest)
+                (new ProductRequest())
                     ->setName("First child test product")
                     ->setDescription("First child test product of Test product's")
                     ->setUrl("url")
@@ -245,19 +250,21 @@ final class CreateOrderTest extends TestCase
                     ->setSku("1231")
                     ->setUrl("https://www.foxdeli.com/demo")
                     ->setImage("https://www.foxdeli.com/img/pages/landing-pages/tabs/delivery-2.png")
-                    ->setPrice((new Money)->setAmount(12.3)->setCurrency("EUR"))
+                    ->setPrice((new Money())->setAmount(12.3)->setCurrency("EUR"))
                     ->setVat(1.23)
                     ->setQuantity(1)
                     ->setReferencedSku("123")
             ])
-            ->setBillingDetails((new BillingDetailsRequest())
+            ->setBillingDetails(
+                (new BillingDetailsRequest())
                 ->setName("John Doe")
                 ->setCompanyName("Doe Ltd")
                 ->setCrn("12345678")
                 ->setVatId("CZ12345678")
                 ->setEmail("johndoe@mail.com")
                 ->setPhone("+420 123 456 789")
-                ->setBillingAddress((new AddressRequest())
+                ->setBillingAddress(
+                    (new AddressRequest())
                     ->setLine1("Sesame street")
                     ->setLine2("11b")
                     ->setCity("MyCoolCity")
@@ -272,7 +279,8 @@ final class CreateOrderTest extends TestCase
         return $order;
     }
 
-    private function getRawResponse() : string {
+    private function getRawResponse(): string
+    {
         return '{
             "id": "22222222-2222-2222-2222-222222222222",
             "platform": "shopify",
@@ -411,7 +419,8 @@ final class CreateOrderTest extends TestCase
         }';
     }
 
-    private function getRawError400Response() : string {
+    private function getRawError400Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Bad Request",
@@ -424,7 +433,8 @@ final class CreateOrderTest extends TestCase
         }';
     }
 
-    private function getRawError401Response() : string {
+    private function getRawError401Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
@@ -434,7 +444,8 @@ final class CreateOrderTest extends TestCase
         }';
     }
 
-    private function getRawError403Response() : string {
+    private function getRawError403Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Eshop was not found for this API key",
@@ -445,7 +456,8 @@ final class CreateOrderTest extends TestCase
         }';
     }
 
-    private function getRawError409Response() : string {
+    private function getRawError409Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Order exists",
@@ -458,7 +470,8 @@ final class CreateOrderTest extends TestCase
         }';
     }
 
-    private function getRawError415Response() : string {
+    private function getRawError415Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Unsupported Media Type",

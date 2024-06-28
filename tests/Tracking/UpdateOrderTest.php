@@ -6,10 +6,10 @@ namespace Tests\Tracking;
 
 use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
-use Foxdeli\ApiPhpSdk\Tracking;
 use Foxdeli\ApiPhpSdk\Model\Order;
 use Foxdeli\ApiPhpSdk\Model\OrderUpdate;
 use Foxdeli\ApiPhpSdk\Model\PaymentRequest;
+use Foxdeli\ApiPhpSdk\Tracking;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -41,7 +41,8 @@ final class UpdateOrderTest extends TestCase
         $this->assertSame('A123456789ABCDE', $order->getOrderNumber());
     }
 
-    private function getRawResponse() : string {
+    private function getRawResponse(): string
+    {
         return '{
             "id": "22222222-2222-2222-2222-222222222222",
             "platform": "shopify",
@@ -326,7 +327,8 @@ final class UpdateOrderTest extends TestCase
         $tracking->updateOrder('22222222-2222-2222-2222-222222222222', $orderUpdate);
     }
 
-    private function getRawError400ResponseOrderId() : string {
+    private function getRawError400ResponseOrderId(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Constraint violation",
@@ -339,7 +341,8 @@ final class UpdateOrderTest extends TestCase
         }';
     }
 
-    private function getRawError400ResponsePaymentMethod() : string {
+    private function getRawError400ResponsePaymentMethod(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Bad Request",
@@ -352,7 +355,8 @@ final class UpdateOrderTest extends TestCase
         }';
     }
 
-    private function getRawError401Response() : string {
+    private function getRawError401Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
@@ -362,7 +366,8 @@ final class UpdateOrderTest extends TestCase
         }';
     }
 
-    private function getRawError403Response() : string {
+    private function getRawError403Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Forbidden operation",
@@ -374,7 +379,8 @@ final class UpdateOrderTest extends TestCase
           }';
     }
 
-    private function getRawError404Response() : string {
+    private function getRawError404Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Order was not found",
@@ -387,7 +393,8 @@ final class UpdateOrderTest extends TestCase
           }';
     }
 
-    private function getRawError415Response() : string {
+    private function getRawError415Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Unsupported Media Type",
