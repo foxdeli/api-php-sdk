@@ -53,7 +53,8 @@ class Configuration extends OpenApiConfiguration
     /**
      * @param string $token
      */
-    public function updateAuthToken(string $token) : self {
+    public function updateAuthToken(string $token): self
+    {
         $this->setApiKey('X-API-Key', $token);
 
         return $this;

@@ -1,24 +1,26 @@
 <?php
+
 namespace Foxdeli\ApiPhpSdk\Endpoint;
 
-interface IEndpoint {
+interface IEndpoint
+{
     /**
      * @return string
      */
-    public function getUrl() : string ;
+    public function getUrl(): string ;
 
     /**
      * @return string[]
      */
-    public function getHeaders() : array;
+    public function getHeaders(): array;
 
     /**
      * @return string
      */
-    public function getBody() : string;
+    public function getBody(): string;
 
     /**
      * @return string
      */
-    public function getMethod() : string;
+    public function getMethod(): string;
 }

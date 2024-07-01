@@ -8,9 +8,9 @@ use DateInterval;
 use DateTime;
 use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
-use Foxdeli\ApiPhpSdk\Tracking;
 use Foxdeli\ApiPhpSdk\Model\DeliveryStateRequest;
 use Foxdeli\ApiPhpSdk\Model\Parcel;
+use Foxdeli\ApiPhpSdk\Tracking;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -35,7 +35,8 @@ final class DeleteParcelTest extends TestCase
         $this->assertTrue($response);
     }
 
-    private function getRawResponse() : string {
+    private function getRawResponse(): string
+    {
         return '';
     }
 
@@ -151,7 +152,8 @@ final class DeleteParcelTest extends TestCase
         $tracking->deleteParcel('33333333-3333-3333-3333-333333333333', "22222222-2222-2222-2222-222222222222");
     }
 
-    private function getRawError400Response() : string {
+    private function getRawError400Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Constraint violation",
@@ -164,7 +166,8 @@ final class DeleteParcelTest extends TestCase
         }';
     }
 
-    private function getRawError401Response() : string {
+    private function getRawError401Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
@@ -174,7 +177,8 @@ final class DeleteParcelTest extends TestCase
         }';
     }
 
-    private function getRawError403Response() : string {
+    private function getRawError403Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Forbidden operation",
@@ -186,7 +190,8 @@ final class DeleteParcelTest extends TestCase
         }';
     }
 
-    private function getRawError404OrderResponse() : string {
+    private function getRawError404OrderResponse(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Order was not found",
@@ -197,7 +202,8 @@ final class DeleteParcelTest extends TestCase
         }';
     }
 
-    private function getRawError404ParcelResponse() : string {
+    private function getRawError404ParcelResponse(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Parcel was not found",
@@ -210,7 +216,8 @@ final class DeleteParcelTest extends TestCase
         }';
     }
 
-    private function getRawError415Response() : string {
+    private function getRawError415Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Unsupported Media Type",

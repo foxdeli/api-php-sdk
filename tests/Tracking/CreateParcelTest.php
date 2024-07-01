@@ -9,13 +9,13 @@ use DateTime;
 use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
 use Foxdeli\ApiPhpSdk\Customer;
-use Foxdeli\ApiPhpSdk\Tracking;
 use Foxdeli\ApiPhpSdk\Model\Carrier;
 use Foxdeli\ApiPhpSdk\Model\DeliveryDetailsRequest;
 use Foxdeli\ApiPhpSdk\Model\DimensionsRequest;
 use Foxdeli\ApiPhpSdk\Model\Parcel;
 use Foxdeli\ApiPhpSdk\Model\ParcelRegistration;
 use Foxdeli\ApiPhpSdk\Model\ParcelTrackingConfigRequest;
+use Foxdeli\ApiPhpSdk\Tracking;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
@@ -41,14 +41,15 @@ final class CreateParcelTest extends TestCase
         $this->assertInstanceOf(Parcel::class, $parcel);
         $this->assertSame("22222222-2222-2222-2222-222222222222", $parcel->getId());
         $this->assertSame('123456', $parcel->getPin());
-        if($externalCreated = $parcel->getExternalCreated()){
+        if($externalCreated = $parcel->getExternalCreated()) {
             $this->assertSame("2024-05-28T13:31:43+00:00", $externalCreated->format('c'));
         } else {
             $this->fail("External date not passed");
         }
     }
 
-    private function getParcelRegistration() : ParcelRegistration {
+    private function getParcelRegistration(): ParcelRegistration
+    {
         $parcelRegistration = new ParcelRegistration();
         $parcelRegistration
             ->setPin('123456')
@@ -71,7 +72,8 @@ final class CreateParcelTest extends TestCase
         return $parcelRegistration;
     }
 
-    private function getRawResponse() : string {
+    private function getRawResponse(): string
+    {
         return '{
             "id": "22222222-2222-2222-2222-222222222222",
             "orderId": "33333333-3333-3333-3333-333333333333",
@@ -152,7 +154,7 @@ final class CreateParcelTest extends TestCase
 
 
         $parcelRegistration = $this->getParcelRegistration();
-        if($parcelRegistration->getTracking()){
+        if($parcelRegistration->getTracking()) {
             $parcelRegistration->setTracking(array_merge(
                 $parcelRegistration->getTracking(),
                 [
@@ -261,7 +263,8 @@ final class CreateParcelTest extends TestCase
         $tracking->createParcel('33333333-3333-3333-3333-333333333333', $this->getParcelRegistration());
     }
 
-    private function getRawError400Response() : string {
+    private function getRawError400Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Bad Request",
@@ -274,7 +277,8 @@ final class CreateParcelTest extends TestCase
         }';
     }
 
-    private function getRawError401Response() : string {
+    private function getRawError401Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "The Token has expired on 2024-01-02T03:04:05Z.",
@@ -284,7 +288,8 @@ final class CreateParcelTest extends TestCase
         }';
     }
 
-    private function getRawError403Response() : string {
+    private function getRawError403Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Forbidden operation",
@@ -296,7 +301,8 @@ final class CreateParcelTest extends TestCase
         }';
     }
 
-    private function getRawError404Response() : string {
+    private function getRawError404Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Order was not found",
@@ -307,7 +313,8 @@ final class CreateParcelTest extends TestCase
         }';
     }
 
-    private function getRawError415Response() : string {
+    private function getRawError415Response(): string
+    {
         return '{
             "type": "about:blank",
             "title": "Unsupported Media Type",

@@ -745,7 +745,7 @@ class PickupPlaceDeprecatedResponse implements ModelInterface, ArrayAccess, \Jso
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -759,7 +759,7 @@ class PickupPlaceDeprecatedResponse implements ModelInterface, ArrayAccess, \Jso
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
-        if($string){
+        if($string) {
             return $string;
         }
         return "";

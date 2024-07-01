@@ -11,22 +11,26 @@ class Authorize extends AEndpoint implements IEndpoint
     */
     private $customer;
 
-    public function __construct(Customer $customer) {
+    public function __construct(Customer $customer)
+    {
         $this->customer = $customer;
     }
 
-    public function getUrl() : string {
+    public function getUrl(): string
+    {
         return '/api/v1/token/authorize';
     }
 
-    public function getHeaders() : array {
+    public function getHeaders(): array
+    {
         return [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json'
         ];
     }
 
-    public function getBody() : string {
+    public function getBody(): string
+    {
         return '{
             "email": "'.$this->customer->getUsername().'",
             "password": "'.$this->customer->getPassword().'"

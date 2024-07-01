@@ -63,7 +63,8 @@ abstract class ADomain
     /**
      * @return ApiException
      */
-    protected function throwNotFound(string $title = "Not Found", string $detail = 'Unexpected response from server to be proccesed') {
+    protected function throwNotFound(string $title = "Not Found", string $detail = 'Unexpected response from server to be proccesed')
+    {
         $errorDetails = '{
             "type" : "about:blank",
             "title" : "'.$title.'",
@@ -76,7 +77,8 @@ abstract class ADomain
     /**
      * @return ApiException
      */
-    protected function throwNotImplemented() {
+    protected function throwNotImplemented()
+    {
         $errorDetails = '{
             "type" : "about:blank",
             "title" : "Not Implemented",

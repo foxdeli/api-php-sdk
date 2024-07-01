@@ -1,6 +1,11 @@
 <?php
 
-return PhpCsFixer\Config::create()
+$finder = (new PhpCsFixer\Finder())
+    ->in(__DIR__)
+;
+
+return (new PhpCsFixer\Config())
+    ->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect())
     ->setUsingCache(true)
     ->setRules([
         '@PSR2' => true,
@@ -15,9 +20,5 @@ return PhpCsFixer\Config::create()
         'single_blank_line_at_eof' => false,
         'blank_line_after_namespace' => false,
     ])
-    ->setFinder(
-        PhpCsFixer\Finder::create()
-        ->exclude('test')
-        ->exclude('tests')
-        ->in(__DIR__)
-    );
+    ->setFinder($finder)
+;

@@ -3,9 +3,9 @@
 namespace Foxdeli\ApiPhpSdk;
 
 use Exception;
+use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
 use Foxdeli\ApiPhpSdk\Customer;
-use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Model\CollectionResponsePickupPlaceResponse;
 use Foxdeli\ApiPhpSdk\Model\FileInfo;
 use Foxdeli\ApiPhpSdk\Model\Order;
@@ -23,8 +23,8 @@ use GuzzleHttp\Client;
 
 class Foxdeli
 {
-    const SANDBOX_HOST = 'https://api.sandbox.foxdeli.com';
-    const PRODUCTION_HOST = 'https://api.foxdeli.com';
+    public const SANDBOX_HOST = 'https://api.sandbox.foxdeli.com';
+    public const PRODUCTION_HOST = 'https://api.foxdeli.com';
 
     /**
     * @var Customer
@@ -56,7 +56,8 @@ class Foxdeli
     */
     private $pickupPlace;
 
-    public function __construct(Customer $customer, Client $client, Configuration $config) {
+    public function __construct(Customer $customer, Client $client, Configuration $config)
+    {
         $this->customer = $customer;
         $this->client = $client;
         $this->config = $config;
@@ -66,7 +67,8 @@ class Foxdeli
         $this->pickupPlace = new PickupPlace($this->client, $this->config);
     }
 
-    public static function init(string $username, string $password, bool $isProd = false) : self {
+    public static function init(string $username, string $password, bool $isProd = false): self
+    {
         $customer = new Customer($username, $password);
 
         $client = new Client();
@@ -87,22 +89,24 @@ class Foxdeli
         return $this->customer;
     }
 
-	/**
+    /**
+     * @throws  ApiException
      * @return  self
      * @access  public
-     * @throws  ApiException
      */
-    public function authorize(): Foxdeli {
+    public function authorize(): Foxdeli
+    {
         $this->authenticator->authorize();
         return $this;
     }
 
-	/**
+    /**
+     * @throws  ApiException
      * @return  self
      * @access  public
-     * @throws  ApiException
      */
-    public function refreshToken(): Foxdeli {
+    public function refreshToken(): Foxdeli
+    {
         $this->authenticator->refresh();
         return $this;
     }
@@ -110,10 +114,11 @@ class Foxdeli
     /**
      * @param OrderRegistration $orderRegistration Prepared OrderRegistration
      *
-     * @return Order|ProblemDetail
      * @throws ApiException
+     * @return Order|ProblemDetail
      */
-    public function createOrder(OrderRegistration $orderRegistration) {
+    public function createOrder(OrderRegistration $orderRegistration)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->tracking->createOrder($orderRegistration);
     }
@@ -122,10 +127,11 @@ class Foxdeli
      * @param string $externalId Order External ID
      * @param string $eshopId Order Eshop ID
      *
-     * @return Order|ProblemDetail
      * @throws ApiException
+     * @return Order|ProblemDetail
      */
-    public function findOrderByExternalId(string $externalId, string $eshopId) {
+    public function findOrderByExternalId(string $externalId, string $eshopId)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->tracking->findOrderByExternalId($externalId, $eshopId);
     }
@@ -133,10 +139,11 @@ class Foxdeli
     /**
      * @param string $orderId Order ID
      *
-     * @return Order|ProblemDetail
      * @throws ApiException
+     * @return Order|ProblemDetail
      */
-    public function findOrderById(string $orderId) {
+    public function findOrderById(string $orderId)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->tracking->findOrderById($orderId);
     }
@@ -145,10 +152,11 @@ class Foxdeli
      * @param string $orderId Order ID
      * @param OrderUpdate $orderUpdate Order data to update.
      *
-     * @return Order|ProblemDetail
      * @throws ApiException
+     * @return Order|ProblemDetail
      */
-    public function updateOrder(string $orderId, OrderUpdate $orderUpdate) {
+    public function updateOrder(string $orderId, OrderUpdate $orderUpdate)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->tracking->updateOrder($orderId, $orderUpdate);
     }
@@ -156,10 +164,11 @@ class Foxdeli
     /**
      * @param string $orderId Order ID
      *
-     * @return Order|ProblemDetail
      * @throws ApiException
+     * @return Order|ProblemDetail
      */
-    public function cancelOrder(string $orderId) {
+    public function cancelOrder(string $orderId)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->tracking->cancelOrder($orderId);
     }
@@ -168,10 +177,11 @@ class Foxdeli
      * @param string $orderId Order ID
      * @param string $file path to invoice file
      *
-     * @return FileInfo|ProblemDetail
      * @throws ApiException
+     * @return FileInfo|ProblemDetail
      */
-    public function uploadOrderInvoice(string $orderId, string $file) {
+    public function uploadOrderInvoice(string $orderId, string $file)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->tracking->uploadOrderInvoice($orderId, $file);
     }
@@ -180,10 +190,11 @@ class Foxdeli
      * @param string $orderId Order ID
      * @param string $file path to proforma invoice file
      *
-     * @return FileInfo|ProblemDetail
      * @throws ApiException
+     * @return FileInfo|ProblemDetail
      */
-    public function uploadOrderProformaInvoice(string $orderId, string $file) {
+    public function uploadOrderProformaInvoice(string $orderId, string $file)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->tracking->uploadOrderProformaInvoice($orderId, $file);
     }
@@ -192,10 +203,11 @@ class Foxdeli
      * @param string $orderId Order ID
      * @param ParcelRegistration $parcelRegistration Parcel data to create.
      *
-     * @return Parcel|ProblemDetail
      * @throws ApiException
+     * @return Parcel|ProblemDetail
      */
-    public function createParcel(string $orderId, ParcelRegistration $parcelRegistration) {
+    public function createParcel(string $orderId, ParcelRegistration $parcelRegistration)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->tracking->createParcel($orderId, $parcelRegistration);
     }
@@ -205,10 +217,11 @@ class Foxdeli
      * @param string $parcelId Parcel ID (required)
      * @param ParcelUpdate $parcelUpdate Parcel data to create. (required)
      *
-     * @return Parcel|ProblemDetail
      * @throws ApiException
+     * @return Parcel|ProblemDetail
      */
-    public function updateParcel(string $orderId, string $parcelId, ParcelUpdate $parcelUpdate) {
+    public function updateParcel(string $orderId, string $parcelId, ParcelUpdate $parcelUpdate)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->tracking->updateParcel($orderId, $parcelId, $parcelUpdate);
     }
@@ -217,10 +230,11 @@ class Foxdeli
      * @param string $orderId Order ID
      * @param string $parcelId Parcel ID (required)
      *
-     * @return Parcel|ProblemDetail
      * @throws ApiException
+     * @return Parcel|ProblemDetail
      */
-    public function findParcelById(string $orderId, string $parcelId) {
+    public function findParcelById(string $orderId, string $parcelId)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->tracking->findParcelById($orderId, $parcelId);
     }
@@ -230,10 +244,11 @@ class Foxdeli
      * @param string            $parcelId Parcel ID (required)
      * @param ParcelStateUpdate $parcelStateUpdate Parcel State Update object (required)
      *
-     * @return Parcel|ProblemDetail
      * @throws ApiException
+     * @return Parcel|ProblemDetail
      */
-    public function updateParcelState(string $orderId, string $parcelId, ParcelStateUpdate $parcelStateUpdate) {
+    public function updateParcelState(string $orderId, string $parcelId, ParcelStateUpdate $parcelStateUpdate)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->tracking->updateParcelState($orderId, $parcelId, $parcelStateUpdate);
     }
@@ -242,10 +257,11 @@ class Foxdeli
      * @param string $orderId Order ID
      * @param string $parcelId Parcel ID (required)
      *
-     * @return true
      * @throws ApiException
+     * @return true
      */
-    public function deleteParcel(string $orderId, string $parcelId) {
+    public function deleteParcel(string $orderId, string $parcelId)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->tracking->deleteParcel($orderId, $parcelId);
     }
@@ -253,12 +269,13 @@ class Foxdeli
     /**
      * @param PickupPlaceCreate $pickupPlaceCreate Pickup place to create (required)
      *
-     * @return ProblemDetail|PickupPlaceResponse
-     *
      * @throws ApiException
      * @throws \InvalidArgumentException
+     * @return ProblemDetail|PickupPlaceResponse
+     *
      */
-    public function createPickupPlace(PickupPlaceCreate $pickupPlaceCreate) {
+    public function createPickupPlace(PickupPlaceCreate $pickupPlaceCreate)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->pickupPlace->createPickupPlace($pickupPlaceCreate);
     }
@@ -266,12 +283,13 @@ class Foxdeli
     /**
      * @param string $id Pickup place ID required)
      *
-     * @return ProblemDetail|PickupPlaceResponse
-     *
      * @throws ApiException
      * @throws \InvalidArgumentException
+     * @return ProblemDetail|PickupPlaceResponse
+     *
      */
-    public function getPickupPlace(string $id) {
+    public function getPickupPlace(string $id)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->pickupPlace->getPickupPlace($id);
     }
@@ -282,12 +300,13 @@ class Foxdeli
      * @param  int $size size of items per page
      * @param  string[] $sort sort order
      *
-     * @return ProblemDetail|CollectionResponsePickupPlaceResponse
-     *
      * @throws ApiException
      * @throws \InvalidArgumentException
+     * @return ProblemDetail|CollectionResponsePickupPlaceResponse
+     *
      */
-    public function getAllEshopPickupPlaces($eshopId, $page = 0, $size = 20, $sort = null) {
+    public function getAllEshopPickupPlaces($eshopId, $page = 0, $size = 20, $sort = null)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->pickupPlace->getAllEshopPickupPlaces($eshopId, $page, $size, $sort);
     }
@@ -298,12 +317,13 @@ class Foxdeli
      * @param  string $pickupPlaceId Pickup place ID (required)
      * @param  PickupPlaceUpdate $pickupPlaceUpdate Pickup place update
      *
-     * @return ProblemDetail|PickupPlaceResponse
-     *
      * @throws ApiException
      * @throws \InvalidArgumentException
+     * @return ProblemDetail|PickupPlaceResponse
+     *
      */
-    public function updatePickupPlace($pickupPlaceId, $pickupPlaceUpdate) {
+    public function updatePickupPlace($pickupPlaceId, $pickupPlaceUpdate)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->pickupPlace->updatePickupPlace($pickupPlaceId, $pickupPlaceUpdate);
     }
@@ -313,12 +333,13 @@ class Foxdeli
      *
      * @param  string $pickupPlaceId Pickup place ID (required)
      *
-     * @return true
-     *
      * @throws ApiException
      * @throws \InvalidArgumentException
+     * @return true
+     *
      */
-    public function deletePickupPlace($pickupPlaceId) {
+    public function deletePickupPlace($pickupPlaceId)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->pickupPlace->deletePickupPlace($pickupPlaceId);
     }
@@ -329,22 +350,24 @@ class Foxdeli
      * @param  string $pickupPlaceId Pickup place ID (required)
      * @param  string $filepath path to invoice file (required)
      *
-     * @return ProblemDetail|FileInfo
-     *
      * @throws ApiException
      * @throws \InvalidArgumentException
+     * @return ProblemDetail|FileInfo
+     *
      */
-    public function uploadPickupPlaceImage(string $pickupPlaceId, string $filepath) {
+    public function uploadPickupPlaceImage(string $pickupPlaceId, string $filepath)
+    {
         $this->updateAuthTokensIfNeeded();
         return $this->pickupPlace->uploadPickupPlaceImage($pickupPlaceId, $filepath);
     }
 
-    private function updateAuthTokensIfNeeded() : void {
-        if (!$this->customer->getIsTokenSet()){
+    private function updateAuthTokensIfNeeded(): void
+    {
+        if (!$this->customer->getIsTokenSet()) {
             $this->authorize();
-        } elseif(!Helper::isValidTokenTime($this->customer->getToken()->getRefreshToken())){
+        } elseif(!Helper::isValidTokenTime($this->customer->getToken()->getRefreshToken())) {
             $this->authorize();
-        } elseif (!Helper::isValidTokenTime($this->customer->getToken()->getToken())){
+        } elseif (!Helper::isValidTokenTime($this->customer->getToken()->getToken())) {
             $this->refreshToken();
         }
     }

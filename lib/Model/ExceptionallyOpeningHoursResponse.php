@@ -530,7 +530,7 @@ class ExceptionallyOpeningHoursResponse implements ModelInterface, ArrayAccess, 
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
@@ -544,7 +544,7 @@ class ExceptionallyOpeningHoursResponse implements ModelInterface, ArrayAccess, 
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
-        if($string){
+        if($string) {
             return $string;
         }
         return "";

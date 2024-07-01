@@ -5,7 +5,8 @@ namespace Foxdeli\ApiPhpSdk;
 use Foxdeli\ApiPhpSdk\Endpoint\Authorize;
 use Throwable;
 
-class Customer{
+class Customer
+{
     /**
     * @var string
     */

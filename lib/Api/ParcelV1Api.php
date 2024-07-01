@@ -27,6 +27,10 @@
 
 namespace Foxdeli\ApiPhpSdk\Api;
 
+use Foxdeli\ApiPhpSdk\ApiException;
+use Foxdeli\ApiPhpSdk\Configuration;
+use Foxdeli\ApiPhpSdk\HeaderSelector;
+use Foxdeli\ApiPhpSdk\ObjectSerializer;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
@@ -34,10 +38,6 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Foxdeli\ApiPhpSdk\ApiException;
-use Foxdeli\ApiPhpSdk\Configuration;
-use Foxdeli\ApiPhpSdk\HeaderSelector;
-use Foxdeli\ApiPhpSdk\ObjectSerializer;
 
 /**
  * ParcelV1Api Class Doc Comment
@@ -213,11 +213,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -248,11 +248,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -283,11 +283,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -318,11 +318,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -353,11 +353,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\Parcel' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -388,11 +388,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -425,11 +425,11 @@ class ParcelV1Api
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
                     try {
-                        if(defined('JSON_THROW_ON_ERROR')){
+                        if(defined('JSON_THROW_ON_ERROR')) {
                             $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         } else {
                             $decodedContent = json_decode($content, false, 512);
-                            if(!$decodedContent){
+                            if(!$decodedContent) {
                                 throw new \JsonException();
                             }
                             $content = $decodedContent;
@@ -641,7 +641,7 @@ class ParcelV1Api
         if (isset($parcel_registration)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                if(PHP_VERSION_ID < 70200){
+                if(PHP_VERSION_ID < 70200) {
                     $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($parcel_registration));
                 } else {
                     $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($parcel_registration));
@@ -861,7 +861,7 @@ class ParcelV1Api
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response)  {
+                function ($response) {
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
@@ -1073,11 +1073,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1108,11 +1108,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1143,11 +1143,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1178,11 +1178,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1213,11 +1213,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\Parcel' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1248,11 +1248,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1285,11 +1285,11 @@ class ParcelV1Api
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
                     try {
-                        if(defined('JSON_THROW_ON_ERROR')){
+                        if(defined('JSON_THROW_ON_ERROR')) {
                             $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         } else {
                             $decodedContent = json_decode($content, false, 512);
-                            if(!$decodedContent){
+                            if(!$decodedContent) {
                                 throw new \JsonException();
                             }
                             $content = $decodedContent;
@@ -1638,11 +1638,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1673,11 +1673,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1708,11 +1708,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1743,11 +1743,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1778,11 +1778,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\Parcel' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1813,11 +1813,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -1850,11 +1850,11 @@ class ParcelV1Api
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
                     try {
-                        if(defined('JSON_THROW_ON_ERROR')){
+                        if(defined('JSON_THROW_ON_ERROR')) {
                             $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         } else {
                             $decodedContent = json_decode($content, false, 512);
-                            if(!$decodedContent){
+                            if(!$decodedContent) {
                                 throw new \JsonException();
                             }
                             $content = $decodedContent;
@@ -2084,7 +2084,7 @@ class ParcelV1Api
         if (isset($parcel_update)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                if(PHP_VERSION_ID < 70200){
+                if(PHP_VERSION_ID < 70200) {
                     $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($parcel_update));
                 } else {
                     $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($parcel_update));
@@ -2224,11 +2224,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2259,11 +2259,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2294,11 +2294,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2329,11 +2329,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2364,11 +2364,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\Parcel' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2399,11 +2399,11 @@ class ParcelV1Api
                         $content = (string) $response->getBody();
                         if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
-                                if(defined('JSON_THROW_ON_ERROR')){
+                                if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                                 } else {
                                     $decodedContent = json_decode($content, false, 512);
-                                    if(!$decodedContent){
+                                    if(!$decodedContent) {
                                         throw new \JsonException();
                                     }
                                     $content = $decodedContent;
@@ -2436,11 +2436,11 @@ class ParcelV1Api
                 $content = (string) $response->getBody();
                 if ($returnType !== 'string') {
                     try {
-                        if(defined('JSON_THROW_ON_ERROR')){
+                        if(defined('JSON_THROW_ON_ERROR')) {
                             $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                         } else {
                             $decodedContent = json_decode($content, false, 512);
-                            if(!$decodedContent){
+                            if(!$decodedContent) {
                                 throw new \JsonException();
                             }
                             $content = $decodedContent;
@@ -2670,7 +2670,7 @@ class ParcelV1Api
         if (isset($parcel_state_update)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                if(PHP_VERSION_ID < 70200){
+                if(PHP_VERSION_ID < 70200) {
                     $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($parcel_state_update));
                 } else {
                     $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($parcel_state_update));

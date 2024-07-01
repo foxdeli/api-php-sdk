@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
+use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Authenticator;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
 use Foxdeli\ApiPhpSdk\Customer;
 use Foxdeli\ApiPhpSdk\Token;
-use Foxdeli\ApiPhpSdk\ApiException;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
 final class AuthorizatorTest extends TestCase
