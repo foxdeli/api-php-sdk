@@ -12,7 +12,7 @@ The documentation for the Foxdeli API can be found [here](https://api.foxdeli.co
 
 ### Requirements
 
-PHP 7.1+ (tested until 8.3)
+Required PHP 7.1+ (tested until 8.3)
 
 ### Composer
 
@@ -33,15 +33,6 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
 ```
 
 Then run `composer install`
-
-### Manual Installation
-
-Download the files and include `autoload.php`:
-
-```php
-<?php
-require_once('/path/to/api-php-sdk/vendor/autoload.php');
-```
 
 ## Getting Started
 
