@@ -27,7 +27,7 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
     }
   ],
   "require": {
-    "foxdeli/api-php-sdk": "master"
+    "foxdeli/api-php-sdk": "1.0.0"
   }
 }
 ```
