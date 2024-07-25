@@ -40,7 +40,7 @@ final class AuthorizatorTest extends TestCase
 
         $token = $customer->getToken();
 
-        $this->assertSame('abcd', $token->getToken());
+        $this->assertSame('abcd', $token->getAccessToken());
         $this->assertSame('1234', $token->getRefreshToken());
     }
 
@@ -112,7 +112,7 @@ final class AuthorizatorTest extends TestCase
         $customer->setToken(new Token('accessToken123', 'refreshToken321'));
 
         $token = $customer->getToken();
-        $this->assertSame('accessToken123', $token->getToken());
+        $this->assertSame('accessToken123', $token->getAccessToken());
         $this->assertSame('refreshToken321', $token->getRefreshToken());
 
         $authenticator = new Authenticator(
@@ -123,7 +123,7 @@ final class AuthorizatorTest extends TestCase
         $authenticator->refresh();
 
         $token = $customer->getToken();
-        $this->assertSame('abcd', $token->getToken());
+        $this->assertSame('abcd', $token->getAccessToken());
         $this->assertSame('1234', $token->getRefreshToken());
     }
 
@@ -155,7 +155,7 @@ final class AuthorizatorTest extends TestCase
         $customer->setToken(new Token('accessToken123', 'refreshToken321'));
 
         $token = $customer->getToken();
-        $this->assertSame('accessToken123', $token->getToken());
+        $this->assertSame('accessToken123', $token->getAccessToken());
         $this->assertSame('refreshToken321', $token->getRefreshToken());
 
         $authenticator = new Authenticator(
@@ -179,7 +179,7 @@ final class AuthorizatorTest extends TestCase
         $customer->setToken(new Token('accessToken123', 'refreshToken321'));
 
         $token = $customer->getToken();
-        $this->assertSame('accessToken123', $token->getToken());
+        $this->assertSame('accessToken123', $token->getAccessToken());
         $this->assertSame('refreshToken321', $token->getRefreshToken());
 
         $authenticator = new Authenticator(
