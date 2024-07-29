@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **external_created** | **\DateTime** | moment in time when was parcel created in external system. | [optional]
 **dimensions** | [**\Foxdeli\ApiPhpSdk\Model\Dimensions**](Dimensions.md) |  | [optional]
 **delivery_details** | [**\Foxdeli\ApiPhpSdk\Model\DeliveryDetails**](DeliveryDetails.md) |  | [optional]
-**pin** | **string** | PIN for pickup | [optional]
+**pin** | **string** | optional PIN for pickup | [optional]
 **state** | [**\Foxdeli\ApiPhpSdk\Model\ParcelState**](ParcelState.md) |  | [optional]
 **tracking_state** | [**\Foxdeli\ApiPhpSdk\Model\TrackingState**](TrackingState.md) |  | [optional]
 **max_store_date** | **\DateTime** |  | [optional]
