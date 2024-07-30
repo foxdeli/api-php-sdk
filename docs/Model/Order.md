@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **customer** | [**\Foxdeli\ApiPhpSdk\Model\Customer**](Customer.md) |  | [optional]
 **parcels** | [**\Foxdeli\ApiPhpSdk\Model\Parcel[]**](Parcel.md) | Parcels contained in this order | [optional]
 **products** | [**\Foxdeli\ApiPhpSdk\Model\Product[]**](Product.md) | Products contained in this order | [optional]
+**recommended_products** | [**\Foxdeli\ApiPhpSdk\Model\RecommendedProduct[]**](RecommendedProduct.md) | Products to be displayed in Recommended Products TnT/email module | [optional]
 **cancelled** | **\DateTime** | Instant of cancellation. DEPRECATION NOTICE: field is marked for removal and will be removed in one of next major releases | [optional]
 **in_urgent_state** | **bool** | is order in urgent state? | [optional]
 **in_important_state** | **bool** | is order in important state? | [optional]
@@ -32,6 +33,7 @@ Name | Type | Description | Notes
 **links** | [**\Foxdeli\ApiPhpSdk\Model\OrderLinks**](OrderLinks.md) |  |
 **billing_details** | [**\Foxdeli\ApiPhpSdk\Model\BillingDetails**](BillingDetails.md) |  | [optional]
 **language** | [**\Foxdeli\ApiPhpSdk\Model\LanguageCode**](LanguageCode.md) |  | [optional]
-**external_links** | [**\Foxdeli\ApiPhpSdk\Model\ExternalLinkResponse[]**](ExternalLinkResponse.md) | list of order external links | [optional]
+**external_links** | [**\Foxdeli\ApiPhpSdk\Model\ExternalLinkResponse[]**](ExternalLinkResponse.md) | list of order external links. DEPRECATION NOTICE: marked for removal. use &#x60;communication.externalLinks&#x60; instead. | [optional]
+**communication** | [**\Foxdeli\ApiPhpSdk\Model\OrderCommunication**](OrderCommunication.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

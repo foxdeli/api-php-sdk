@@ -3131,7 +3131,7 @@ class PickupPlaceApi
      *
      * @throws \Foxdeli\ApiPhpSdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return mixed[]|int|object|null|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\FileInfo
+     * @return mixed[]|int|object|null|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\FileInfo|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail
      */
     public function uploadPickupPlaceImage($id, $file, string $contentType = self::contentTypes['uploadPickupPlaceImage'][0])
     {
@@ -3150,7 +3150,7 @@ class PickupPlaceApi
      *
      * @throws \Foxdeli\ApiPhpSdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array<mixed[]|int|object|null|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\FileInfo> array of \Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\FileInfo, HTTP status code, HTTP response headers (array of strings)
+     * @return array<mixed[]|int|object|null|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\FileInfo|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail> array of \Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\FileInfo|\Foxdeli\ApiPhpSdk\Model\ProblemDetail|\Foxdeli\ApiPhpSdk\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadPickupPlaceImageWithHttpInfo($id, $file, string $contentType = self::contentTypes['uploadPickupPlaceImage'][0])
     {
@@ -3332,12 +3332,12 @@ class PickupPlaceApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 413:
-                    if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' === '\SplFileObject') {
+                case 201:
+                    if ('\Foxdeli\ApiPhpSdk\Model\FileInfo' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
+                        if ('\Foxdeli\ApiPhpSdk\Model\FileInfo' !== 'string') {
                             try {
                                 if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
@@ -3363,7 +3363,7 @@ class PickupPlaceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Foxdeli\ApiPhpSdk\Model\ProblemDetail', []),
+                        ObjectSerializer::deserialize($content, '\Foxdeli\ApiPhpSdk\Model\FileInfo', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3402,12 +3402,12 @@ class PickupPlaceApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 201:
-                    if ('\Foxdeli\ApiPhpSdk\Model\FileInfo' === '\SplFileObject') {
+                case 413:
+                    if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Foxdeli\ApiPhpSdk\Model\FileInfo' !== 'string') {
+                        if ('\Foxdeli\ApiPhpSdk\Model\ProblemDetail' !== 'string') {
                             try {
                                 if(defined('JSON_THROW_ON_ERROR')) {
                                     $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
@@ -3433,7 +3433,7 @@ class PickupPlaceApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Foxdeli\ApiPhpSdk\Model\FileInfo', []),
+                        ObjectSerializer::deserialize($content, '\Foxdeli\ApiPhpSdk\Model\ProblemDetail', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -3509,10 +3509,10 @@ class PickupPlaceApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 413:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Foxdeli\ApiPhpSdk\Model\ProblemDetail',
+                        '\Foxdeli\ApiPhpSdk\Model\FileInfo',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3525,10 +3525,10 @@ class PickupPlaceApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 201:
+                case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Foxdeli\ApiPhpSdk\Model\FileInfo',
+                        '\Foxdeli\ApiPhpSdk\Model\ProblemDetail',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
