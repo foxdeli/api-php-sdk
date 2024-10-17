@@ -43,7 +43,7 @@ class Tracking extends ADomain
     {
         $api = new OrderV1Api($this->client, $this->config);
         $order = $api->createOrder($orderRegistration);
-        if($order instanceof ProblemDetail || $order instanceof Order) {
+        if ($order instanceof ProblemDetail || $order instanceof Order) {
             return $order;
         }
         throw $this->throwNotImplemented();
@@ -64,7 +64,7 @@ class Tracking extends ADomain
     {
         $api = new OrderV1Api($this->client, $this->config);
         $order = $api->findOrderByExternalId($externalId, $eshopId);
-        if($order instanceof ProblemDetail || $order instanceof Order) {
+        if ($order instanceof ProblemDetail || $order instanceof Order) {
             return $order;
         }
         throw $this->throwNotImplemented();
@@ -84,7 +84,7 @@ class Tracking extends ADomain
     {
         $api = new OrderV1Api($this->client, $this->config);
         $order = $api->findOrderById($orderId);
-        if($order instanceof ProblemDetail || $order instanceof Order) {
+        if ($order instanceof ProblemDetail || $order instanceof Order) {
             return $order;
         }
         throw $this->throwNotImplemented();
@@ -105,7 +105,7 @@ class Tracking extends ADomain
     {
         $api = new OrderV1Api($this->client, $this->config);
         $order = $api->updateOrder($orderId, $orderUpdate);
-        if($order instanceof ProblemDetail || $order instanceof Order) {
+        if ($order instanceof ProblemDetail || $order instanceof Order) {
             return $order;
         }
         throw $this->throwNotImplemented();
@@ -125,7 +125,7 @@ class Tracking extends ADomain
     {
         $api = new OrderV1Api($this->client, $this->config);
         $order = $api->cancelOrder($orderId);
-        if($order instanceof ProblemDetail || $order instanceof Order) {
+        if ($order instanceof ProblemDetail || $order instanceof Order) {
             return $order;
         }
         throw $this->throwNotImplemented();
@@ -150,7 +150,7 @@ class Tracking extends ADomain
         }
         $file = new SplFileObject($filepath);
         $order = $api->uploadInvoice($orderId, $file);
-        if($order instanceof ProblemDetail || $order instanceof FileInfo) {
+        if ($order instanceof ProblemDetail || $order instanceof FileInfo) {
             return $order;
         }
         throw $this->throwNotImplemented();
@@ -175,7 +175,7 @@ class Tracking extends ADomain
         }
         $file = new SplFileObject($filepath);
         $order = $api->uploadProformaInvoice($orderId, $file);
-        if($order instanceof ProblemDetail || $order instanceof FileInfo) {
+        if ($order instanceof ProblemDetail || $order instanceof FileInfo) {
             return $order;
         }
         throw $this->throwNotImplemented();
@@ -196,7 +196,7 @@ class Tracking extends ADomain
     {
         $api = new ParcelV1Api($this->client, $this->config);
         $parcel = $api->createParcel($orderId, $parcelRegistration);
-        if($parcel instanceof ProblemDetail || $parcel instanceof Parcel) {
+        if ($parcel instanceof ProblemDetail || $parcel instanceof Parcel) {
             return $parcel;
         }
         throw $this->throwNotImplemented();
@@ -218,7 +218,7 @@ class Tracking extends ADomain
     {
         $api = new ParcelV1Api($this->client, $this->config);
         $parcel = $api->updateParcel($orderId, $parcelId, $parcelUpdate);
-        if($parcel instanceof ProblemDetail || $parcel instanceof Parcel) {
+        if ($parcel instanceof ProblemDetail || $parcel instanceof Parcel) {
             return $parcel;
         }
         throw $this->throwNotImplemented();
@@ -239,7 +239,7 @@ class Tracking extends ADomain
     {
         $api = new ParcelV1Api($this->client, $this->config);
         $parcel = $api->findParcelById($orderId, $parcelId);
-        if($parcel instanceof ProblemDetail || $parcel instanceof Parcel) {
+        if ($parcel instanceof ProblemDetail || $parcel instanceof Parcel) {
             return $parcel;
         }
         throw $this->throwNotImplemented();
@@ -261,7 +261,7 @@ class Tracking extends ADomain
     {
         $api = new ParcelV1Api($this->client, $this->config);
         $parcel = $api->updateParcelState($orderId, $parcelId, $parcelStateUpdate);
-        if($parcel instanceof ProblemDetail || $parcel instanceof Parcel) {
+        if ($parcel instanceof ProblemDetail || $parcel instanceof Parcel) {
             return $parcel;
         }
         throw $this->throwNotImplemented();

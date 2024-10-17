@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentService
+ * PaymentState
  *
  * PHP version 7.4
  *
@@ -30,26 +30,24 @@ namespace Foxdeli\ApiPhpSdk\Model;
 use \Foxdeli\ApiPhpSdk\ObjectSerializer;
 
 /**
- * PaymentService Class Doc Comment
+ * PaymentState Class Doc Comment
  *
  * @category Class
- * @description Type of service used for payment
+ * @description State of payment
  * @package  Foxdeli\ApiPhpSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PaymentService
+class PaymentState
 {
     /**
      * Possible values of this enum
      */
-    public const PAYPAL = 'PAYPAL';
+    public const UNKNOWN = 'UNKNOWN';
 
-    public const APPLE_PAY = 'APPLE_PAY';
+    public const UNPAID = 'UNPAID';
 
-    public const GOOGLE_PAY = 'GOOGLE_PAY';
-
-    public const OTHER = 'OTHER';
+    public const PAID = 'PAID';
 
     /**
      * Gets allowable values of the enum
@@ -58,10 +56,9 @@ class PaymentService
     public static function getAllowableEnumValues()
     {
         return [
-            self::PAYPAL,
-            self::APPLE_PAY,
-            self::GOOGLE_PAY,
-            self::OTHER
+            self::UNKNOWN,
+            self::UNPAID,
+            self::PAID
         ];
     }
 }

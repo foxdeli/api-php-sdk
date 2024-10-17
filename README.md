@@ -138,6 +138,7 @@ List of all models used in API
 - [PaymentRequest](docs/Model/PaymentRequest.md)
 - [PaymentResponse](docs/Model/PaymentResponse.md)
 - [PaymentService](docs/Model/PaymentService.md)
+- [PaymentTag](docs/Model/PaymentTag.md)
 - [PickupPlaceCreate](docs/Model/PickupPlaceCreate.md)
 - [PickupPlaceDeprecatedResponse](docs/Model/PickupPlaceDeprecatedResponse.md)
 - [PickupPlaceFilter](docs/Model/PickupPlaceFilter.md)
@@ -160,7 +161,6 @@ List of all models used in API
 - [TrackingState](docs/Model/TrackingState.md)
 - [UrgentState](docs/Model/UrgentState.md)
 - [WorkflowState](docs/Model/WorkflowState.md)
-
 
 ## Tests
 
