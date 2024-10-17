@@ -386,7 +386,7 @@ class JsonNullableString implements ModelInterface, ArrayAccess, \JsonSerializab
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
-        if($string) {
+        if ($string) {
             return $string;
         }
         return "";

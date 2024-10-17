@@ -420,7 +420,7 @@ class Gps implements ModelInterface, ArrayAccess, \JsonSerializable
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
-        if($string) {
+        if ($string) {
             return $string;
         }
         return "";

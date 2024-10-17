@@ -39,7 +39,7 @@ class PickupPlace extends ADomain
     {
         $api = new PickupPlaceApi($this->client, $this->config);
         $pickupPlace = $api->createPickupPlace($pickupPlaceCreate);
-        if($pickupPlace instanceof ProblemDetail || $pickupPlace instanceof PickupPlaceResponse) {
+        if ($pickupPlace instanceof ProblemDetail || $pickupPlace instanceof PickupPlaceResponse) {
             return $pickupPlace;
         }
         throw $this->throwNotImplemented();
@@ -59,7 +59,7 @@ class PickupPlace extends ADomain
     {
         $api = new PickupPlaceApi($this->client, $this->config);
         $pickupPlace = $api->getPickupPlace($id);
-        if($pickupPlace instanceof ProblemDetail || $pickupPlace instanceof PickupPlaceResponse) {
+        if ($pickupPlace instanceof ProblemDetail || $pickupPlace instanceof PickupPlaceResponse) {
             return $pickupPlace;
         }
         throw $this->throwNotImplemented();
@@ -82,7 +82,7 @@ class PickupPlace extends ADomain
     {
         $api = new PickupPlaceApi($this->client, $this->config);
         $pickupPlaces = $api->getAllEshopPickupPlaces($eshopId, $page, $size, $sort);
-        if($pickupPlaces instanceof ProblemDetail || $pickupPlaces instanceof CollectionResponsePickupPlaceResponse) {
+        if ($pickupPlaces instanceof ProblemDetail || $pickupPlaces instanceof CollectionResponsePickupPlaceResponse) {
             return $pickupPlaces;
         }
         throw $this->throwNotImplemented();
@@ -103,7 +103,7 @@ class PickupPlace extends ADomain
     {
         $api = new PickupPlaceApi($this->client, $this->config);
         $pickupPlaces = $api->updatePickupPlace($pickupPlaceId, $pickupPlaceUpdate);
-        if($pickupPlaces instanceof ProblemDetail || $pickupPlaces instanceof PickupPlaceResponse) {
+        if ($pickupPlaces instanceof ProblemDetail || $pickupPlaces instanceof PickupPlaceResponse) {
             return $pickupPlaces;
         }
         throw $this->throwNotImplemented();
@@ -128,7 +128,7 @@ class PickupPlace extends ADomain
         }
         $file = new SplFileObject($filepath);
         $order = $api->uploadPickupPlaceImage($pickupPlaceId, $file);
-        if($order instanceof ProblemDetail || $order instanceof FileInfo) {
+        if ($order instanceof ProblemDetail || $order instanceof FileInfo) {
             return $order;
         }
         throw $this->throwNotImplemented();

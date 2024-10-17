@@ -23,12 +23,12 @@ class Helper
             ),
             true
         );
-        if(!$baseDecoded) {
+        if (!$baseDecoded) {
             return false;
         }
 
         $decodedToken = json_decode($baseDecoded);
-        if(!$decodedToken) {
+        if (!$decodedToken) {
             return false;
         }
 

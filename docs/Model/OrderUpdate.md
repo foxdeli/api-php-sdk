@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **price** | [**\Foxdeli\ApiPhpSdk\Model\Money**](Money.md) |  | [optional]
 **cash_on_delivery** | [**\Foxdeli\ApiPhpSdk\Model\Money**](Money.md) |  | [optional]
 **additional_costs** | [**\Foxdeli\ApiPhpSdk\Model\AdditionalCostRequest[]**](AdditionalCostRequest.md) |  | [optional]
-**payment** | [**\Foxdeli\ApiPhpSdk\Model\PaymentRequest**](PaymentRequest.md) |  | [optional]
+**payment** | [**\Foxdeli\ApiPhpSdk\Model\PaymentUpdateRequest**](PaymentUpdateRequest.md) |  | [optional]
 **customer** | [**\Foxdeli\ApiPhpSdk\Model\CustomerRequest**](CustomerRequest.md) |  | [optional]
 **destination** | [**\Foxdeli\ApiPhpSdk\Model\DestinationRequest**](DestinationRequest.md) |  | [optional]
 **products** | [**\Foxdeli\ApiPhpSdk\Model\ProductRequest[]**](ProductRequest.md) |  | [optional]

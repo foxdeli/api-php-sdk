@@ -365,7 +365,7 @@ class Foxdeli
     {
         if (!$this->customer->getIsTokenSet()) {
             $this->authorize();
-        } elseif(!Helper::isValidTokenTime($this->customer->getToken()->getRefreshToken())) {
+        } elseif (!Helper::isValidTokenTime($this->customer->getToken()->getRefreshToken())) {
             $this->authorize();
         } elseif (!Helper::isValidTokenTime($this->customer->getToken()->getToken())) {
             $this->refreshToken();

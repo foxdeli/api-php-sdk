@@ -1,6 +1,7 @@
 {
     "name": "foxdeli/api-php-sdk",
     "description": "Foxdeli API PHP SDK",
+    "version": "1.2",
     "keywords": [
         "foxdeli",
         "api",

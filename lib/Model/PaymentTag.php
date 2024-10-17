@@ -1,6 +1,6 @@
 <?php
 /**
- * PaymentService
+ * PaymentTag
  *
  * PHP version 7.4
  *
@@ -30,26 +30,32 @@ namespace Foxdeli\ApiPhpSdk\Model;
 use \Foxdeli\ApiPhpSdk\ObjectSerializer;
 
 /**
- * PaymentService Class Doc Comment
+ * PaymentTag Class Doc Comment
  *
  * @category Class
- * @description Type of service used for payment
+ * @description Optional tag related to UNPAID state of payment
  * @package  Foxdeli\ApiPhpSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PaymentService
+class PaymentTag
 {
     /**
      * Possible values of this enum
      */
-    public const PAYPAL = 'PAYPAL';
+    public const AWAITING_30_MIN = 'AWAITING_30MIN';
 
-    public const APPLE_PAY = 'APPLE_PAY';
+    public const AWAITING_1_DAY = 'AWAITING_1DAY';
 
-    public const GOOGLE_PAY = 'GOOGLE_PAY';
+    public const AWAITING_2_DAYS = 'AWAITING_2DAYS';
 
-    public const OTHER = 'OTHER';
+    public const AWAITING_3_DAYS = 'AWAITING_3DAYS';
+
+    public const AWAITING_4_DAYS = 'AWAITING_4DAYS';
+
+    public const AWAITING_5_DAYS = 'AWAITING_5DAYS';
+
+    public const AWAITING = 'AWAITING';
 
     /**
      * Gets allowable values of the enum
@@ -58,10 +64,13 @@ class PaymentService
     public static function getAllowableEnumValues()
     {
         return [
-            self::PAYPAL,
-            self::APPLE_PAY,
-            self::GOOGLE_PAY,
-            self::OTHER
+            self::AWAITING_30_MIN,
+            self::AWAITING_1_DAY,
+            self::AWAITING_2_DAYS,
+            self::AWAITING_3_DAYS,
+            self::AWAITING_4_DAYS,
+            self::AWAITING_5_DAYS,
+            self::AWAITING
         ];
     }
 }

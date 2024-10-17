@@ -31,8 +31,8 @@ use Foxdeli\ApiPhpSdk\Model\ParcelStateUpdate;
 use Foxdeli\ApiPhpSdk\Model\ParcelTrackingConfigRequest;
 use Foxdeli\ApiPhpSdk\Model\ParcelUpdate;
 use Foxdeli\ApiPhpSdk\Model\PaymentMethod;
-use Foxdeli\ApiPhpSdk\Model\PaymentRequest;
 use Foxdeli\ApiPhpSdk\Model\PaymentService;
+use Foxdeli\ApiPhpSdk\Model\PaymentUpdateRequest;
 use Foxdeli\ApiPhpSdk\Model\PickupPlaceCreate;
 use Foxdeli\ApiPhpSdk\Model\PickupPlaceUpdate;
 use Foxdeli\ApiPhpSdk\Model\ProductRequest;
@@ -75,7 +75,7 @@ $order->setEshopId(ESHOP_ID)
                 ->setCurrency("EUR")
             )
         ])
-    ->setPayment((new PaymentRequest)
+    ->setPayment((new PaymentUpdateRequest)
         ->setPaid(false)
         ->setMethod(PaymentMethod::CASH_ON_DELIVERY)
         ->setService(PaymentService::PAYPAL)

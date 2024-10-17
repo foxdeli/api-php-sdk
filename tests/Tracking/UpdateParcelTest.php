@@ -44,14 +44,14 @@ final class UpdateParcelTest extends TestCase
         $this->assertInstanceOf(Parcel::class, $parcel);
         $this->assertSame("33333333-3333-3333-3333-333333333333", $parcel->getOrderId());
         $this->assertSame("22222222-2222-2222-2222-222222222222", $parcel->getId());
-        if($dimensions = $parcel->getDimensions()) {
+        if ($dimensions = $parcel->getDimensions()) {
             $this->assertSame(101, $dimensions->getHeight());
             $this->assertSame(51, $dimensions->getLength());
             $this->assertSame(26, $dimensions->getWidth());
         } else {
             $this->fail("Dimensions should be set up");
         }
-        if($externalCreated = $parcel->getExternalCreated()) {
+        if ($externalCreated = $parcel->getExternalCreated()) {
             $this->assertSame("2024-05-28T13:31:43+00:00", $externalCreated->format('c'));
         } else {
             $this->fail("External date not passed");
@@ -162,7 +162,7 @@ final class UpdateParcelTest extends TestCase
         $this->expectExceptionMessage('Invalid value for enum \'\Foxdeli\ApiPhpSdk\Model\Carrier\', must be one of: \'');
 
         $parcelUpdate = $this->getParcelUpdate();
-        if($parcelUpdate->getTracking()) {
+        if ($parcelUpdate->getTracking()) {
             $parcelUpdate->setTracking(array_merge(
                 $parcelUpdate->getTracking(),
                 [
