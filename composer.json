@@ -32,7 +32,8 @@
         "phpunit/php-code-coverage": ">6.1",
         "phpstan/phpstan": ">1.4",
         "nette/neon": ">3.3",
-        "friendsofphp/php-cs-fixer": ">3.0"
+        "friendsofphp/php-cs-fixer": ">3.0",
+        "squizlabs/php_codesniffer": "*"
     },
     "autoload": {
         "psr-4": {

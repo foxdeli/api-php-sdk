@@ -180,6 +180,19 @@ class Foxdeli
      * @throws ApiException
      * @return FileInfo|ProblemDetail
      */
+    public function uploadFile(string $orderId, string $file)
+    {
+        $this->updateAuthTokensIfNeeded();
+        return $this->tracking->uploadFile($orderId, $file);
+    }
+
+    /**
+     * @param string $orderId Order ID
+     * @param string $file path to invoice file
+     *
+     * @throws ApiException
+     * @return FileInfo|ProblemDetail
+     */
     public function uploadOrderInvoice(string $orderId, string $file)
     {
         $this->updateAuthTokensIfNeeded();

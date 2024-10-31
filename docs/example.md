@@ -18,6 +18,7 @@ use Foxdeli\ApiPhpSdk\Model\DestinationRequest;
 use Foxdeli\ApiPhpSdk\Model\DestinationType;
 use Foxdeli\ApiPhpSdk\Model\DimensionsRequest;
 use Foxdeli\ApiPhpSdk\Model\ExceptionallyOpeningHoursRequest;
+use Foxdeli\ApiPhpSdk\Model\File;
 use Foxdeli\ApiPhpSdk\Model\Gps;
 use Foxdeli\ApiPhpSdk\Model\LanguageCode;
 use Foxdeli\ApiPhpSdk\Model\LocationRequest;
@@ -299,6 +300,9 @@ try {
     $orderToUpdate->setOrderNumber("abcdefg54321");
     $updatedOrder = $foxdeli->updateOrder($order->getId(), $orderToUpdate);
     echo ("Updated order: " . $updatedOrder->getId() . ' with new order number: ' . $updatedOrder->getOrderNumber() . PHP_EOL);
+
+    $uploadedInvoideOrder = $foxdeli->uploadFile($order->getId(), __DIR__ . '/foxdeli-intro.en-03-04-2023.pdf');
+    echo ('Order uploaded file path: ' . $uploadedInvoideOrder->getPath() . PHP_EOL);
 
     $uploadedInvoideOrder = $foxdeli->uploadOrderInvoice($order->getId(), __DIR__ . '/foxdeli-intro.en-03-04-2023.pdf');
     echo ('Order uploaded invoice path: ' . $uploadedInvoideOrder->getPath() . PHP_EOL);
