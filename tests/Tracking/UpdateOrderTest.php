@@ -8,7 +8,7 @@ use Foxdeli\ApiPhpSdk\ApiException;
 use Foxdeli\ApiPhpSdk\Configuration\Configuration;
 use Foxdeli\ApiPhpSdk\Model\Order;
 use Foxdeli\ApiPhpSdk\Model\OrderUpdate;
-use Foxdeli\ApiPhpSdk\Model\PaymentRequest;
+use Foxdeli\ApiPhpSdk\Model\PaymentUpdateRequest;
 use Foxdeli\ApiPhpSdk\Tracking;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
@@ -218,7 +218,7 @@ final class UpdateOrderTest extends TestCase
         $this->expectExceptionMessage('Invalid value for enum \'\Foxdeli\ApiPhpSdk\Model\PaymentMethod\', must be one of: \'CASH_ON_DELIVERY\', \'BANK_TRANSFER\', \'CARD\', \'CRYPTO\', \'OTHER\'');
 
         $orderUpdate = new OrderUpdate();
-        $orderUpdate->setPayment((new PaymentRequest())->setMethod('CASH_ON_DELIVER'));
+        $orderUpdate->setPayment((new PaymentUpdateRequest())->setMethod('CASH_ON_DELIVER'));
         $tracking->updateOrder('22222222-2222-2222-2222-222222222222', $orderUpdate);
 
     }

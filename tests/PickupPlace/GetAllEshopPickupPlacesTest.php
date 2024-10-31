@@ -32,7 +32,7 @@ final class GetAllEshopPickupPlacesTest extends TestCase
 
         $this->assertInstanceOf(CollectionResponsePickupPlaceResponse::class, $pickupPlaces);
         $items = $pickupPlaces->getItems();
-        if(is_null($items)) {
+        if (is_null($items)) {
             $this->fail("Array of PickupPlaceResponse expected");
         } else {
             $this->assertCount(2, $items);

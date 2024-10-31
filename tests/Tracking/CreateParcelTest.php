@@ -41,7 +41,7 @@ final class CreateParcelTest extends TestCase
         $this->assertInstanceOf(Parcel::class, $parcel);
         $this->assertSame("22222222-2222-2222-2222-222222222222", $parcel->getId());
         $this->assertSame('123456', $parcel->getPin());
-        if($externalCreated = $parcel->getExternalCreated()) {
+        if ($externalCreated = $parcel->getExternalCreated()) {
             $this->assertSame("2024-05-28T13:31:43+00:00", $externalCreated->format('c'));
         } else {
             $this->fail("External date not passed");
@@ -154,7 +154,7 @@ final class CreateParcelTest extends TestCase
 
 
         $parcelRegistration = $this->getParcelRegistration();
-        if($parcelRegistration->getTracking()) {
+        if ($parcelRegistration->getTracking()) {
             $parcelRegistration->setTracking(array_merge(
                 $parcelRegistration->getTracking(),
                 [

@@ -19,3 +19,5 @@ composer.lock
 
 # Ignore generator files
 .openapi-generator/
+
+.idea

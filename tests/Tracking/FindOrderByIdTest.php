@@ -34,7 +34,7 @@ final class FindOrderByIdTest extends TestCase
         $this->assertInstanceOf(Order::class, $order);
         $this->assertSame('22222222-2222-2222-2222-222222222222', $order->getId());
         $this->assertSame('CREATED', $order->getOrderState());
-        if($externalCreated = $order->getExternalCreated()) {
+        if ($externalCreated = $order->getExternalCreated()) {
             $this->assertSame("2024-04-30T09:36:52+00:00", $externalCreated->format('c'));
         } else {
             $this->fail("External date not passed");
