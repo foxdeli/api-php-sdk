@@ -157,6 +157,31 @@ class Tracking extends ADomain
     }
 
     /**
+     * Upload file and store it under order id. File will be attached to order communication emails. Max file size is 1 MB
+     *
+     * @param  string $orderId Order ID (required)
+     * @param  string $filepath path to invoice file (required)
+     *
+     * @throws ApiException
+     * @throws \InvalidArgumentException
+     * @return ProblemDetail|FileInfo
+     *
+     */
+    public function uploadFile(string $orderId, string $filepath)
+    {
+        $api = new OrderV1Api($this->client, $this->config);
+        if (!file_exists($filepath)) {
+            throw $this->throwNotFound("File Not Found", "File $filepath not found. Please check given file path.");
+        }
+        $file = new SplFileObject($filepath);
+        $order = $api->uploadFile($orderId, $file);
+        if ($order instanceof ProblemDetail || $order instanceof FileInfo) {
+            return $order;
+        }
+        throw $this->throwNotImplemented();
+    }
+
+    /**
      * Upload order proforma invoice file and store it under order id - max file size is 10 MB and max size of the whole request (all files plus headers etc) is 11 MB
      *
      * @param  string $orderId Order ID (required)

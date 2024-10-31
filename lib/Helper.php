@@ -35,7 +35,3 @@ class Helper
         return self::isValidTime($decodedToken->exp);
     }
 }
-
-
-
-

@@ -28,8 +28,8 @@
 
 namespace Foxdeli\ApiPhpSdk\Model;
 
-use \ArrayAccess;
-use \Foxdeli\ApiPhpSdk\ObjectSerializer;
+use ArrayAccess;
+use Foxdeli\ApiPhpSdk\ObjectSerializer;
 
 /**
  * JsonNullableString Class Doc Comment
@@ -402,5 +402,3 @@ class JsonNullableString implements ModelInterface, ArrayAccess, \JsonSerializab
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-
