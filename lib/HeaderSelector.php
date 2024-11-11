@@ -212,7 +212,7 @@ class HeaderSelector
             return $header;
         }
 
-        return trim($header, '; ') . ';q=' . rtrim(sprintf('%0.3f', $weight / 1000), '0');
+        return trim($header, '; ') . ';q=' . rtrim(sprintf('%0.3F', $weight / 1000), '0');
     }
 
     /**
