@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **url** | **string** | url of tracking page in carrier system | [optional]
 **reference_id** | **string** | optional id to reference parcel in carrier tracking system | [optional]
 **carrier_configuration_id** | **string** | optional id of carrier configuration in Foxdeli. Carrier configuration is used for communication with carrier api. If no value is provided and carrier requires authorization, primary carrier configuration for given carrier will be used. | [optional]
+**additional_params** | **array<string,string>** | optional additional parameters related to tracking of given parcel.  Parameters are carrier specific. | [optional]
 **courier_phone** | **string** | optional phone number of courier that is transporting parcel | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **line1** | **string** | address line1 |
 **line2** | **string** | address line2 | [optional]
 **city** | **string** | city name |
-**postal_code** | **string** | zip code |
+**postal_code** | **string** | zip code | [optional]
 **country_code** | [**\Foxdeli\ApiPhpSdk\Model\CountryCode**](CountryCode.md) |  |
 **state** | **string** | optional address state | [optional]
 **region** | **string** | optional address region | [optional]
