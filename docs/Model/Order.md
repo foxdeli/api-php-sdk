@@ -36,5 +36,6 @@ Name | Type | Description | Notes
 **language** | [**\Foxdeli\ApiPhpSdk\Model\LanguageCode**](LanguageCode.md) |  | [optional]
 **external_links** | [**\Foxdeli\ApiPhpSdk\Model\ExternalLinkResponse[]**](ExternalLinkResponse.md) | list of order external links. DEPRECATION NOTICE: marked for removal. use &#x60;communication.externalLinks&#x60; instead. |
 **communication** | [**\Foxdeli\ApiPhpSdk\Model\OrderCommunication**](OrderCommunication.md) |  |
+**timeline** | [**\Foxdeli\ApiPhpSdk\Model\TimelineItem[]**](TimelineItem.md) | Order timeline |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

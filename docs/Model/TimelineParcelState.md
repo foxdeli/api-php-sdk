@@ -5,8 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **delivery** | [**\Foxdeli\ApiPhpSdk\Model\DeliveryState**](DeliveryState.md) |  | [optional]
-**important** | [**\Foxdeli\ApiPhpSdk\Model\ImportantState**](ImportantState.md) |  | [optional]
-**urgent** | [**\Foxdeli\ApiPhpSdk\Model\UrgentState**](UrgentState.md) |  | [optional]
+**delivery_tag** | [**\Foxdeli\ApiPhpSdk\Model\DeliveryTag**](DeliveryTag.md) |  | [optional]
 **deliver_today** | **bool** | is parcel being delivered today? | [optional]
 **returning** | **bool** | is parcel returning back to sender? | [optional]
 

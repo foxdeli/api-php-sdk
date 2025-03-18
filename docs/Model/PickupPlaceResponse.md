@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **email** | **string** | email |
 **image** | **string** | Pickup place image link | [optional]
 **storage_time** | **int** | How long the shipment will be stored, in days | [optional]
+**storage_time_type** | [**\Foxdeli\ApiPhpSdk\Model\StorageTimeType**](StorageTimeType.md) |  | [optional]
 **opening_hours** | [**\Foxdeli\ApiPhpSdk\Model\OpeningHoursResponse**](OpeningHoursResponse.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

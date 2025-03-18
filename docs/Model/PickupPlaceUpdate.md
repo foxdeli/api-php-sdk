@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **phone** | **string** | Pickup place phone | [optional]
 **email** | **string** |  | [optional]
 **storage_time_in_days** | **int** |  | [optional]
+**storage_time_type** | [**\Foxdeli\ApiPhpSdk\Model\JsonNullableStorageTimeType**](JsonNullableStorageTimeType.md) |  | [optional]
 **opening_hours** | [**\Foxdeli\ApiPhpSdk\Model\OpeningHoursRequest**](OpeningHoursRequest.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

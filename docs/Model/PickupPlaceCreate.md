@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **phone** | **string** | Pickup place phone |
 **email** | **string** |  |
 **storage_time_in_days** | **int** |  |
+**storage_time_type** | [**\Foxdeli\ApiPhpSdk\Model\StorageTimeType**](StorageTimeType.md) |  | [optional]
 **opening_hours** | [**\Foxdeli\ApiPhpSdk\Model\OpeningHoursRequest**](OpeningHoursRequest.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
