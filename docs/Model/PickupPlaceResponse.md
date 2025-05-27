@@ -18,7 +18,8 @@ Name | Type | Description | Notes
 **phone** | **string** | Customer phone |
 **email** | **string** | email |
 **image** | **string** | Pickup place image link | [optional]
-**storage_time** | **int** | How long the shipment will be stored, in days | [optional]
+**storage_time** | **int** | How long the shipment will be stored, in days. Deprecated in favor of storageTimeInDays. | [optional]
+**storage_time_in_days** | **int** | How many days will be the shipment stored | [optional]
 **storage_time_type** | [**\Foxdeli\ApiPhpSdk\Model\StorageTimeType**](StorageTimeType.md) |  | [optional]
 **opening_hours** | [**\Foxdeli\ApiPhpSdk\Model\OpeningHoursResponse**](OpeningHoursResponse.md) |  |
 

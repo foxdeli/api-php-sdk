@@ -1,10 +1,8 @@
 parameters:
-	checkGenericClassInNonGenericObjectType: false
 	treatPhpDocTypesAsCertain: false
 	ignoreErrors:
-		- "#^Strict comparison using === between '\\\\\\\\Foxdeli\\\\\\\\ApiPhpSdk…' and '\\\\\\\\SplFileObject' will always evaluate to false.$#"
+		- "#^Strict comparison using (!==|===) between ('\\\\\\\\Foxdeli\\\\\\\\ApiPhpSdk…'|'string'|'SplFileObject'|SplFileObject|string) and ('\\\\\\\\SplFileObject'|'string'|null|SplFileObject) will always evaluate to (true|false).$#"
 		- "#^If condition is always (false|true).$#"
 		- "#^Variable \\$[^\\s]* in isset\\(\\) always exists and is not nullable.$#"
-		- "#^Ternary operator condition is always true.$#"
-		- "#^Call to function is_array\\(\\) with SplFileObject will always evaluate to false.$#"
-
+		- "#^Ternary operator condition is always (true|false).$#"
+		- "#^Call to function is_array\\(\\) with (\\*NEVER\\*|non-empty-list|SplFileObject) will always evaluate to (false|true).$#"

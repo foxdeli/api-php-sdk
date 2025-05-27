@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **sku** | **string** | product SKU | [optional]
 **name** | **string** | name of product | [optional]
 **description** | **string** | short product description. | [optional]
+**availability** | [**\Foxdeli\ApiPhpSdk\Model\ProductAvailabilityRequest**](ProductAvailabilityRequest.md) |  | [optional]
 **url** | **string** | url of product detail. | [optional]
 **image** | **string** | url of product image. | [optional]
 **price** | [**\Foxdeli\ApiPhpSdk\Model\Money**](Money.md) |  | [optional]
