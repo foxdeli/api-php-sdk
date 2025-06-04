@@ -55,6 +55,8 @@ class Carrier
 
     public const DIY = 'DIY';
 
+    public const DODO = 'DODO';
+
     public const DPD = 'DPD';
 
     public const DPD_CZ = 'DPD_CZ';
@@ -159,6 +161,7 @@ class Carrier
             self::DB_SCHENKER,
             self::DHL,
             self::DIY,
+            self::DODO,
             self::DPD,
             self::DPD_CZ,
             self::DPD_PL,
